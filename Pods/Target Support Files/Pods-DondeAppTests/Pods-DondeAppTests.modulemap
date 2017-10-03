@@ -1,0 +1,6 @@
+framework module Pods_DondeAppTests {
+  umbrella header "Pods-DondeAppTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
