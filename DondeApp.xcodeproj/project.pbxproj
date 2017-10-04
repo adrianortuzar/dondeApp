@@ -31,7 +31,6 @@
 		3AAD2B4F1E2BF549003FF22F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAD2B4E1E2BF549003FF22F /* AppDelegate.swift */; };
 		3AAD2B561E2BF549003FF22F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AAD2B551E2BF549003FF22F /* Assets.xcassets */; };
 		3AAD2B591E2BF549003FF22F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AAD2B571E2BF549003FF22F /* LaunchScreen.storyboard */; };
-		3AAD2B6F1E2BF549003FF22F /* clientAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAD2B6E1E2BF549003FF22F /* clientAppUITests.swift */; };
 		3AB4EF841E8AC2FD00DCF6BD /* Speed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB4EF831E8AC2FD00DCF6BD /* Speed.swift */; };
 		3AB4EF861E8D8BBC00DCF6BD /* LocationManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB4EF851E8D8BBC00DCF6BD /* LocationManagerTest.swift */; };
 		3ADE7EA91E6C388300917D9C /* RlmLocationManagerFinishError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE7EA81E6C388300917D9C /* RlmLocationManagerFinishError.swift */; };
@@ -104,8 +103,6 @@
 		3AAD2B5F1E2BF549003FF22F /* DondeAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DondeAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AAD2B651E2BF549003FF22F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AAD2B6A1E2BF549003FF22F /* DondeAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DondeAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3AAD2B6E1E2BF549003FF22F /* clientAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clientAppUITests.swift; sourceTree = "<group>"; };
-		3AAD2B701E2BF549003FF22F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AB4EF831E8AC2FD00DCF6BD /* Speed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Speed.swift; sourceTree = "<group>"; };
 		3AB4EF851E8D8BBC00DCF6BD /* LocationManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagerTest.swift; sourceTree = "<group>"; };
 		3ADE7EA81E6C388300917D9C /* RlmLocationManagerFinishError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RlmLocationManagerFinishError.swift; sourceTree = "<group>"; };
@@ -229,7 +226,6 @@
 			children = (
 				3AAD2B4D1E2BF549003FF22F /* DondeApp */,
 				3AAD2B621E2BF549003FF22F /* DondeAppTests */,
-				3AAD2B6D1E2BF549003FF22F /* DondeAppUITests */,
 				D56E69401F858C0500434378 /* DondeAppTrainingAIModels */,
 				3AAD2B4C1E2BF549003FF22F /* Products */,
 				3A287CF91E44B6D1004CB8CA /* Frameworks */,
@@ -276,15 +272,6 @@
 				3AB4EF851E8D8BBC00DCF6BD /* LocationManagerTest.swift */,
 			);
 			path = DondeAppTests;
-			sourceTree = "<group>";
-		};
-		3AAD2B6D1E2BF549003FF22F /* DondeAppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				3AAD2B6E1E2BF549003FF22F /* clientAppUITests.swift */,
-				3AAD2B701E2BF549003FF22F /* Info.plist */,
-			);
-			path = DondeAppUITests;
 			sourceTree = "<group>";
 		};
 		3ADE7EA31E69FDDA00917D9C /* LocationsTableVC */ = {
@@ -738,7 +725,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AAD2B6F1E2BF549003FF22F /* clientAppUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
