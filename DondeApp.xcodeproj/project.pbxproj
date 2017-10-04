@@ -44,6 +44,7 @@
 		48229A2F0C670B0C304BC09F /* Pods_DondeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93651637750D22AA2904E85F /* Pods_DondeAppTests.framework */; };
 		A6A51BCDB5FDE6D04C843713 /* Pods_DondeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AB2442E6DCDF8A688396B75 /* Pods_DondeApp.framework */; };
 		D541399F1F82EEB200EA76EF /* RlmPlaceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D541399D1F82EEB200EA76EF /* RlmPlaceTest.swift */; };
+		D56E69421F858C0500434378 /* DondeAppTrainingAIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56E69411F858C0500434378 /* DondeAppTrainingAIModels.swift */; };
 		D586ADE11F802EF100A27BE9 /* TrackLocationDBtest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D586ADE01F802EF100A27BE9 /* TrackLocationDBtest.swift */; };
 		D586ADE61F82E6E500A27BE9 /* RlmTrackInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D586ADE51F82E6E400A27BE9 /* RlmTrackInteractor.swift */; };
 /* End PBXBuildFile section */
@@ -62,6 +63,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 3AAD2B4A1E2BF549003FF22F;
 			remoteInfo = clientApp;
+		};
+		D56E69441F858C0500434378 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3AAD2B431E2BF549003FF22F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3AAD2B4A1E2BF549003FF22F;
+			remoteInfo = DondeApp;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -112,6 +120,9 @@
 		93651637750D22AA2904E85F /* Pods_DondeAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DondeAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C345F2809F68F11578053F08 /* Pods_DondeAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DondeAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D541399D1F82EEB200EA76EF /* RlmPlaceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RlmPlaceTest.swift; sourceTree = "<group>"; };
+		D56E693F1F858C0500434378 /* DondeAppTrainingAIModelsTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DondeAppTrainingAIModelsTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D56E69411F858C0500434378 /* DondeAppTrainingAIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DondeAppTrainingAIModels.swift; sourceTree = "<group>"; };
+		D56E69431F858C0500434378 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D586ADE01F802EF100A27BE9 /* TrackLocationDBtest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackLocationDBtest.swift; sourceTree = "<group>"; };
 		D586ADE51F82E6E400A27BE9 /* RlmTrackInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RlmTrackInteractor.swift; sourceTree = "<group>"; };
 		D5D9CA8FC5C8CA47A4F09B3B /* Pods-DondeAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DondeAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DondeAppUITests/Pods-DondeAppUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -144,6 +155,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AF500A9E1DFF46A3A397D3D /* Pods_DondeAppUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D56E693C1F858C0500434378 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,10 +227,10 @@
 		3AAD2B421E2BF549003FF22F = {
 			isa = PBXGroup;
 			children = (
-				D541399A1F82EDCC00EA76EF /* TrainingsDataBases */,
 				3AAD2B4D1E2BF549003FF22F /* DondeApp */,
 				3AAD2B621E2BF549003FF22F /* DondeAppTests */,
 				3AAD2B6D1E2BF549003FF22F /* DondeAppUITests */,
+				D56E69401F858C0500434378 /* DondeAppTrainingAIModels */,
 				3AAD2B4C1E2BF549003FF22F /* Products */,
 				3A287CF91E44B6D1004CB8CA /* Frameworks */,
 				3CF106BD8EE87DE4794A03DE /* Pods */,
@@ -225,6 +243,7 @@
 				3AAD2B4B1E2BF549003FF22F /* DondeApp.app */,
 				3AAD2B5F1E2BF549003FF22F /* DondeAppTests.xctest */,
 				3AAD2B6A1E2BF549003FF22F /* DondeAppUITests.xctest */,
+				D56E693F1F858C0500434378 /* DondeAppTrainingAIModelsTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -319,6 +338,16 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		D56E69401F858C0500434378 /* DondeAppTrainingAIModels */ = {
+			isa = PBXGroup;
+			children = (
+				D541399A1F82EDCC00EA76EF /* TrainingsDataBases */,
+				D56E69411F858C0500434378 /* DondeAppTrainingAIModels.swift */,
+				D56E69431F858C0500434378 /* Info.plist */,
+			);
+			path = DondeAppTrainingAIModels;
+			sourceTree = "<group>";
+		};
 		D586ADE21F8276F500A27BE9 /* DataInteractors */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,13 +423,31 @@
 			productReference = 3AAD2B6A1E2BF549003FF22F /* DondeAppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		D56E693E1F858C0500434378 /* DondeAppTrainingAIModelsTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D56E69481F858C0500434378 /* Build configuration list for PBXNativeTarget "DondeAppTrainingAIModelsTest" */;
+			buildPhases = (
+				D56E693B1F858C0500434378 /* Sources */,
+				D56E693C1F858C0500434378 /* Frameworks */,
+				D56E693D1F858C0500434378 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D56E69451F858C0500434378 /* PBXTargetDependency */,
+			);
+			name = DondeAppTrainingAIModelsTest;
+			productName = DondeAppTrainingAIModels;
+			productReference = D56E693F1F858C0500434378 /* DondeAppTrainingAIModelsTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		3AAD2B431E2BF549003FF22F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = AdrianOrtuzar;
 				TargetAttributes = {
@@ -428,6 +475,12 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 3AAD2B4A1E2BF549003FF22F;
 					};
+					D56E693E1F858C0500434378 = {
+						CreatedOnToolsVersion = 9.0;
+						DevelopmentTeam = 4NCRJVA8BF;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 3AAD2B4A1E2BF549003FF22F;
+					};
 				};
 			};
 			buildConfigurationList = 3AAD2B461E2BF549003FF22F /* Build configuration list for PBXProject "DondeApp" */;
@@ -446,6 +499,7 @@
 				3AAD2B4A1E2BF549003FF22F /* DondeApp */,
 				3AAD2B5E1E2BF549003FF22F /* DondeAppTests */,
 				3AAD2B691E2BF549003FF22F /* DondeAppUITests */,
+				D56E693E1F858C0500434378 /* DondeAppTrainingAIModelsTest */,
 			);
 		};
 /* End PBXProject section */
@@ -473,6 +527,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		3AAD2B681E2BF549003FF22F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D56E693D1F858C0500434378 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -681,6 +742,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D56E693B1F858C0500434378 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D56E69421F858C0500434378 /* DondeAppTrainingAIModels.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -693,6 +762,11 @@
 			isa = PBXTargetDependency;
 			target = 3AAD2B4A1E2BF549003FF22F /* DondeApp */;
 			targetProxy = 3AAD2B6B1E2BF549003FF22F /* PBXContainerItemProxy */;
+		};
+		D56E69451F858C0500434378 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3AAD2B4A1E2BF549003FF22F /* DondeApp */;
+			targetProxy = D56E69441F858C0500434378 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -902,6 +976,62 @@
 			};
 			name = Release;
 		};
+		D56E69461F858C0500434378 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4NCRJVA8BF;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = DondeAppTrainingAIModels/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = adrianort.DondeAppTrainingAIModels;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DondeApp.app/DondeApp";
+			};
+			name = Debug;
+		};
+		D56E69471F858C0500434378 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4NCRJVA8BF;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = DondeAppTrainingAIModels/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = adrianort.DondeAppTrainingAIModels;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DondeApp.app/DondeApp";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -937,6 +1067,15 @@
 			buildConfigurations = (
 				3AAD2B7A1E2BF549003FF22F /* Debug */,
 				3AAD2B7B1E2BF549003FF22F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D56E69481F858C0500434378 /* Build configuration list for PBXNativeTarget "DondeAppTrainingAIModelsTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D56E69461F858C0500434378 /* Debug */,
+				D56E69471F858C0500434378 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

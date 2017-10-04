@@ -49,6 +49,16 @@
                ReferencedContainer = "container:DondeApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D56E693E1F858C0500434378"
+               BuildableName = "DondeAppTrainingAIModelsTest.xctest"
+               BlueprintName = "DondeAppTrainingAIModelsTest"
+               ReferencedContainer = "container:DondeApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
