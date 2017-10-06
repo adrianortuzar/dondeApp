@@ -9,12 +9,24 @@ class DayTrackViewModel {
     case realm
   }
 
+  var day: Date {
+    didSet {
+      setTracks()
+    }
+  }
+
+  var disposable: Disposable!
+
   init() {
+    day = Date()
+  }
+
+  func setTracks() {
     guard let resultsTracks = getResultsTracks() else {
       return
     }
 
-    _ = Observable.collection(from: resultsTracks).subscribe({ _ in
+    disposable = Observable.collection(from: resultsTracks).subscribe({ _ in
       guard let tracksDidChange = self.tracksDidChange else {
         return
       }
@@ -31,7 +43,7 @@ class DayTrackViewModel {
 
   func getDate(dayType: DayType) -> Date {
     let calendar = NSCalendar.current
-    let currentDate = Date()
+    let currentDate = day
     var datc = DateComponents()
     datc.year = calendar.component(.year, from: currentDate)
     datc.month = calendar.component(.month, from: currentDate)

@@ -1,4 +1,5 @@
 PODS:
+  - DatePickerDialog (2.0)
   - Realm (2.10.2):
     - Realm/Headers (= 2.10.2)
   - Realm/Headers (2.10.2)
@@ -10,15 +11,17 @@ PODS:
   - RxSwift (3.4.0)
 
 DEPENDENCIES:
+  - DatePickerDialog
   - RealmSwift (~> 2.10.2)
   - RxRealm
 
 SPEC CHECKSUMS:
+  DatePickerDialog: 5e1c24d9fe6506cd45dbc573eed7b0a251b1c09d
   Realm: 0ef72b837fb67e9f4b098bac771ddd72c7fdbb69
   RealmSwift: 07a9ae0505091eda6b2ee7c190c3786d6e90a7b0
   RxRealm: 323de579b50b5e0f4a3e087d5925021f976ffaf1
   RxSwift: 3789a1af753002a14edecdb698a2424624296a9c
 
-PODFILE CHECKSUM: 1ff8dce262b203923e4f64cf46224b88726bc073
+PODFILE CHECKSUM: 79e996af00d5faea75304ba640b120178bcad9f0
 
 COCOAPODS: 1.2.1

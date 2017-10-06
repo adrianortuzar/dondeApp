@@ -8,6 +8,7 @@ target ‘DondeApp' do
   # Pods for DondeApp
   pod 'RealmSwift', '~> 2.10.2’
   pod 'RxRealm'
+  pod 'DatePickerDialog'
 
   target 'DondeAppTests' do
     inherit! :search_paths

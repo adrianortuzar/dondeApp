@@ -1,11 +1,20 @@
 import UIKit
 import MapKit
+import DatePickerDialog
 
 class DayTrackViewController: UIViewController {
 
   @IBOutlet weak var tableView: UITableView!
 
   let viewModel = DayTrackViewModel()
+
+  lazy var dateButton: UIButton = {
+    var button = UIButton.init(type: .custom)
+    button.frame = CGRect.init(x: 0, y: 0, width: 100, height: 40)
+    button.setTitleColor(UIColor.black, for: .normal)
+    button.addTarget(self, action: #selector(pressed), for: .touchUpInside)
+    return button
+  }()
 
   init() {
     super.init(nibName: "DayTrackViewController", bundle: nil)
@@ -15,18 +24,33 @@ class DayTrackViewController: UIViewController {
     viewModel.tracksDidChange = { [unowned self] dayTrackViewModel in
       self.tableView.reloadData()
     }
+
+    addButtonToNavigationTitle()
   }
 
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
-  fileprivate let timeDateFormat: DateFormatter = {
-    let dateFormatter = DateFormatter()
-    dateFormatter.timeZone = NSTimeZone.local
-    dateFormatter.dateFormat = "HH:mm"
-    return dateFormatter
-  }()
+  private func addButtonToNavigationTitle() {
+    setDateButtonTitle()
+    self.navigationItem.titleView = dateButton
+  }
+
+  private func setDateButtonTitle() {
+    let buttonTitle = DateFormatter().stringDayMonth(from: viewModel.day)
+    dateButton.setTitle(buttonTitle, for: .normal)
+  }
+
+  func pressed(sender: UIButton!) {
+    DatePickerDialog().show("", defaultDate: viewModel.day, datePickerMode: .date) { date in
+      guard let date = date else {
+        return
+      }
+      self.viewModel.day = date
+      self.setDateButtonTitle()
+    }
+  }
 }
 
 extension DayTrackViewController : UITableViewDataSource {
@@ -55,12 +79,14 @@ extension DayTrackViewController : UITableViewDataSource {
   }
 
   private func getCellTextLabel(withTrack track: RlmTrack) -> String {
+    let dateFormatter = DateFormatter()
+    let trackFirstTime = dateFormatter.stringHourMinutes(from: track.firstTime)
+    let trackLastTime = dateFormatter.stringHourMinutes(from: track.lastTime)
+
     if track.locations.count > 1 {
-      return track.speedType  + " " +  timeDateFormat.string(
-        from: track.firstTime) + " - " + timeDateFormat.string(from: track.lastTime
-      )
+      return track.speedType  + " " +  trackFirstTime + " - " + trackLastTime
     } else {
-      return track.speedType  + " " +  timeDateFormat.string(from: track.firstTime)  + " --:--"
+      return track.speedType  + " " + trackFirstTime + " --:--"
     }
   }
 }
