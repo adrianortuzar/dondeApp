@@ -39,12 +39,12 @@
 		3AFECA8B1E81344700723629 /* RlmTrackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFECA8A1E81344700723629 /* RlmTrackTest.swift */; };
 		A6A51BCDB5FDE6D04C843713 /* Pods_DondeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AB2442E6DCDF8A688396B75 /* Pods_DondeApp.framework */; };
 		BF921345D4AB7F1CEE0AE254 /* Pods_DondeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93651637750D22AA2904E85F /* Pods_DondeAppTests.framework */; };
-		D5350BC91F878B3800C72A9F /* TrainingsDataBases in Resources */ = {isa = PBXBuildFile; fileRef = D5350BC81F878B3800C72A9F /* TrainingsDataBases */; };
+		D5350BCE1F879A1A00C72A9F /* vondelParkTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5350BCB1F879A1200C72A9F /* vondelParkTraining.swift */; };
+		D5350BCF1F879A1E00C72A9F /* TrackLocationDBtest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5350BCA1F879A1200C72A9F /* TrackLocationDBtest.swift */; };
+		D5350BD71F879BC500C72A9F /* locationsTest.realm in Resources */ = {isa = PBXBuildFile; fileRef = D5350BD51F879BC500C72A9F /* locationsTest.realm */; };
+		D5350BD81F879BC500C72A9F /* testCoffeVoundel.realm in Resources */ = {isa = PBXBuildFile; fileRef = D5350BD61F879BC500C72A9F /* testCoffeVoundel.realm */; };
 		D541399F1F82EEB200EA76EF /* RlmPlaceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D541399D1F82EEB200EA76EF /* RlmPlaceTest.swift */; };
-		D56E69421F858C0500434378 /* DondeAppTrainingAIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56E69411F858C0500434378 /* DondeAppTrainingAIModels.swift */; };
 		D586ADE61F82E6E500A27BE9 /* RlmTrackInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D586ADE51F82E6E400A27BE9 /* RlmTrackInteractor.swift */; };
-		D5AAB9741F8597CE00731409 /* vondelParkTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7F0F551EA164C700A19EBC /* vondelParkTraining.swift */; };
-		D5AAB9751F8597D200731409 /* TrackLocationDBtest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D586ADE01F802EF100A27BE9 /* TrackLocationDBtest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,7 +92,6 @@
 		3A3727351E4C9688002C3691 /* KeyChainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
 		3A3727381E4CE5AE002C3691 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		3A5B72371E546CE100273749 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		3A7F0F551EA164C700A19EBC /* vondelParkTraining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vondelParkTraining.swift; sourceTree = "<group>"; };
 		3A948A501E4E422000967250 /* RlmLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RlmLocation.swift; sourceTree = "<group>"; };
 		3AAD2B4B1E2BF549003FF22F /* DondeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DondeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AAD2B4E1E2BF549003FF22F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -116,12 +115,13 @@
 		93651637750D22AA2904E85F /* Pods_DondeAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DondeAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4D6726944A24781762940C8 /* Pods-DondeAppTrainingAIModelsTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DondeAppTrainingAIModelsTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DondeAppTrainingAIModelsTest/Pods-DondeAppTrainingAIModelsTest.debug.xcconfig"; sourceTree = "<group>"; };
 		C345F2809F68F11578053F08 /* Pods_DondeAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DondeAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D5350BC81F878B3800C72A9F /* TrainingsDataBases */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TrainingsDataBases; sourceTree = "<group>"; };
+		D5350BCA1F879A1200C72A9F /* TrackLocationDBtest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackLocationDBtest.swift; sourceTree = "<group>"; };
+		D5350BCB1F879A1200C72A9F /* vondelParkTraining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vondelParkTraining.swift; sourceTree = "<group>"; };
+		D5350BD51F879BC500C72A9F /* locationsTest.realm */ = {isa = PBXFileReference; lastKnownFileType = file; name = locationsTest.realm; path = DondeAppTrainingAIModels/TrainingsDataBases/locationsTest.realm; sourceTree = SOURCE_ROOT; };
+		D5350BD61F879BC500C72A9F /* testCoffeVoundel.realm */ = {isa = PBXFileReference; lastKnownFileType = file; name = testCoffeVoundel.realm; path = DondeAppTrainingAIModels/TrainingsDataBases/testCoffeVoundel.realm; sourceTree = SOURCE_ROOT; };
 		D541399D1F82EEB200EA76EF /* RlmPlaceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RlmPlaceTest.swift; sourceTree = "<group>"; };
 		D56E693F1F858C0500434378 /* DondeAppTrainingAIModelsTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DondeAppTrainingAIModelsTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D56E69411F858C0500434378 /* DondeAppTrainingAIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DondeAppTrainingAIModels.swift; sourceTree = "<group>"; };
 		D56E69431F858C0500434378 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D586ADE01F802EF100A27BE9 /* TrackLocationDBtest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackLocationDBtest.swift; sourceTree = "<group>"; };
 		D586ADE51F82E6E400A27BE9 /* RlmTrackInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RlmTrackInteractor.swift; sourceTree = "<group>"; };
 		F87A34BC06E21A0E2701CD2A /* Pods-DondeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DondeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-DondeApp/Pods-DondeApp.release.xcconfig"; sourceTree = "<group>"; };
 		FD28CCBE7EAF2F071FCCE66A /* Pods-DondeAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DondeAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DondeAppTests/Pods-DondeAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -212,16 +212,6 @@
 			name = Services;
 			sourceTree = "<group>";
 		};
-		3A7F0F541EA1649D00A19EBC /* TrainingTests */ = {
-			isa = PBXGroup;
-			children = (
-				3A7F0F551EA164C700A19EBC /* vondelParkTraining.swift */,
-				D586ADE01F802EF100A27BE9 /* TrackLocationDBtest.swift */,
-			);
-			name = TrainingTests;
-			path = ../DondeAppTests;
-			sourceTree = "<group>";
-		};
 		3AAD2B421E2BF549003FF22F = {
 			isa = PBXGroup;
 			children = (
@@ -306,6 +296,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D5350BD21F879B9500C72A9F /* TrainingsDataBases */ = {
+			isa = PBXGroup;
+			children = (
+				D5350BD51F879BC500C72A9F /* locationsTest.realm */,
+				D5350BD61F879BC500C72A9F /* testCoffeVoundel.realm */,
+			);
+			name = TrainingsDataBases;
+			path = DBForTraining;
+			sourceTree = "<group>";
+		};
 		D541399B1F82EDEE00EA76EF /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,9 +319,9 @@
 		D56E69401F858C0500434378 /* DondeAppTrainingAIModels */ = {
 			isa = PBXGroup;
 			children = (
-				D5350BC81F878B3800C72A9F /* TrainingsDataBases */,
-				3A7F0F541EA1649D00A19EBC /* TrainingTests */,
-				D56E69411F858C0500434378 /* DondeAppTrainingAIModels.swift */,
+				D5350BD21F879B9500C72A9F /* TrainingsDataBases */,
+				D5350BCA1F879A1200C72A9F /* TrackLocationDBtest.swift */,
+				D5350BCB1F879A1200C72A9F /* vondelParkTraining.swift */,
 				D56E69431F858C0500434378 /* Info.plist */,
 			);
 			path = DondeAppTrainingAIModels;
@@ -489,10 +489,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A0CDC3D1E64BC3B00ADA22D /* LocationsTableViewController.xib in Resources */,
-				D5350BC91F878B3800C72A9F /* TrainingsDataBases in Resources */,
 				3AAD2B591E2BF549003FF22F /* LaunchScreen.storyboard in Resources */,
 				3AAD2B561E2BF549003FF22F /* Assets.xcassets in Resources */,
 				3A0CDC421E67086300ADA22D /* MapViewController.xib in Resources */,
+				D5350BD71F879BC500C72A9F /* locationsTest.realm in Resources */,
+				D5350BD81F879BC500C72A9F /* testCoffeVoundel.realm in Resources */,
 				3AFECA871E7FFF4900723629 /* DayTrackViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -721,9 +722,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5AAB9751F8597D200731409 /* TrackLocationDBtest.swift in Sources */,
-				D56E69421F858C0500434378 /* DondeAppTrainingAIModels.swift in Sources */,
-				D5AAB9741F8597CE00731409 /* vondelParkTraining.swift in Sources */,
+				D5350BCF1F879A1E00C72A9F /* TrackLocationDBtest.swift in Sources */,
+				D5350BCE1F879A1A00C72A9F /* vondelParkTraining.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
