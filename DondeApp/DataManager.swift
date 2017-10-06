@@ -214,10 +214,6 @@ class DataManager: NSObject {
       try realm.write {
         visit.setPlace(realm:realm)
         visit.place?.calculateAverageCoordinates()
-
-        if let travel = createRlmTravel(with: visit, realm:realm) {
-          realm.add(travel)
-        }
       }
     } catch {
       print(error)
@@ -316,91 +312,6 @@ class DataManager: NSObject {
         .sorted(by: { $0.arrivalDate.compare($1.arrivalDate) == ComparisonResult.orderedDescending }))
 
       return visitsSorted
-    }
-  }
-
-  // MARK: RlmTravel
-
-  func createRlmTravel(with arrivalVisit: RlmVisit, realm: Realm) -> RlmTravel? {
-
-    // get departureVisit
-    if let departureVisit = getVisits(
-      from: Date.distantPast,
-      to: arrivalVisit.arrivalDate,
-      realm: realm
-      ).first {
-
-      // get locations
-      let locations = getLocations(
-        from: departureVisit.departureDate,
-        to: arrivalVisit.arrivalDate,
-        realm:realm
-      )
-
-      // create and save the travel
-      let rlmTravel: RlmTravel = {
-        if let travel = realm.objects(RlmTravel.self)
-          .filter("arrivalVisit.departureDate == %@", arrivalVisit.departureDate)
-          .first {
-          return travel
-        } else {
-          return RlmTravel.init()
-        }
-      }()
-      rlmTravel.departureVisit = departureVisit
-      rlmTravel.arrivalVisit = arrivalVisit
-      rlmTravel.locations.append(objectsIn: locations)
-
-      return rlmTravel
-    } else {
-      return nil
-    }
-  }
-
-  func createTravels() throws {
-
-    // remove travels
-    guard let realm = getRealm(type: .defaultType) else {
-      throw DataManagerError.creatingRealm
-    }
-
-    try realm.write {
-      realm.delete(realm.objects(RlmTravel.self))
-    }
-
-    let visits = getVisits(from: nil, to: nil, realm:realm)
-    for visit in visits {
-      if let travel = createRlmTravel(with: visit, realm:realm) {
-        addTo(realm: realm, object: travel)
-      }
-    }
-  }
-
-  func getTravels(from fromDate: Date?, to toDate: Date?, realm: Realm) -> [RlmTravel] {
-
-    if fromDate != nil && toDate != nil {
-
-      let travels = realm.objects(RlmTravel.self)
-        .filter("(departureVisit.departureDate > %@ && departureVisit.departureDate < %@) || (arrivalVisit.arrivalDate > %@ && arrivalVisit.arrivalDate < %@)",
-                fromDate!, toDate!, fromDate!, toDate!)
-
-      let travelsOrdered = Array(travels).sorted(by: {
-        guard let currentArrivalDate = $0.arrivalVisit?.arrivalDate,
-          let nextArrivalDate = $1.arrivalVisit?.arrivalDate else {
-            return false
-        }
-        return currentArrivalDate.compare(nextArrivalDate) == ComparisonResult.orderedAscending
-      })
-
-      return travelsOrdered
-    } else {
-      return Array(realm.objects(RlmTravel.self)).sorted(by: {
-        guard let currentArrivalDate = $0.arrivalVisit?.arrivalDate,
-          let nextArrivalDate = $1.arrivalVisit?.arrivalDate else {
-            return false
-        }
-        return currentArrivalDate.compare(nextArrivalDate) == ComparisonResult.orderedDescending
-      })
     }
   }
 
