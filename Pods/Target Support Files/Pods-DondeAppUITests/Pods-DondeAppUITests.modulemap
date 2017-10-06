@@ -1,6 +1,0 @@
-framework module Pods_DondeAppUITests {
-  umbrella header "Pods-DondeAppUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}

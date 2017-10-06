@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_DondeAppUITestsVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_DondeAppUITestsVersionString[];
+FOUNDATION_EXPORT double Pods_DondeAppTrainingAIModelsTestVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_DondeAppTrainingAIModelsTestVersionString[];
 

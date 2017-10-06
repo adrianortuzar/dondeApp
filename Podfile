@@ -14,7 +14,7 @@ target ‘DondeApp' do
     # Pods for testing
   end
 
-  target 'DondeAppUITests' do
+  target 'DondeAppTrainingAIModelsTest' do
     inherit! :search_paths
     # Pods for testing
   end

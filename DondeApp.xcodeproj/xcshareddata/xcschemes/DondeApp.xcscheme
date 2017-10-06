@@ -40,16 +40,6 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3AAD2B691E2BF549003FF22F"
-               BuildableName = "DondeAppUITests.xctest"
-               BlueprintName = "DondeAppUITests"
-               ReferencedContainer = "container:DondeApp.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
             skipped = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
