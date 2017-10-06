@@ -21,3 +21,7 @@ xcuserdata/
 *.moved-aside
 *.xccheckout
 *.xcscmblueprint
+
+## Realm
+*.realm.lock
+*.realm.management
