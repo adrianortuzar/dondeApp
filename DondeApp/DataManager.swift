@@ -30,7 +30,7 @@ class DataManager: NSObject {
 
   // MARK: realm interactor
 
-  func getRealm(fileName: String) -> Realm? {
+  func getRealm(fileName: String) -> Realm {
     return rlmInteractor.getRealm(fileName: fileName)
   }
 
@@ -38,7 +38,7 @@ class DataManager: NSObject {
     try rlmInteractor.copyRealmInDocumentsFolder(realm: realm)
   }
 
-  func getRealm(type: RealmType) -> Realm? {
+  func getRealm(type: RealmType) -> Realm {
     return rlmInteractor.getRealm(type: type)
   }
 
@@ -104,9 +104,7 @@ class DataManager: NSObject {
   // MARK: RlmTrack interactor
 
   func getResultsTracks(from fromDate: Date, to toDate: Date, realmType: RealmType) ->  Results<RlmTrack>? {
-    guard let realm = getRealm(type: realmType) else {
-      return nil
-    }
+    let realm = getRealm(type: realmType)
     return rlmTrackInteractor.getResultsTracks(from: fromDate, to: toDate, realm: realm)
   }
 

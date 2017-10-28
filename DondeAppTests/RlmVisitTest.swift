@@ -6,16 +6,10 @@ import CoreLocation
 
 class RlmVisitTest: XCTestCase {
   let arrivalDate = Date()
-  var realm: Realm!
+  var realm = DataManager.shared.getRealm(type: .testType)
 
-  override func setUp() {
+  override class func setUp() {
     super.setUp()
-
-    guard let realmTest = DataManager.shared.getRealm(type: .testType) else {
-      fatalError()
-    }
-    realm = realmTest
-
     DataManager.shared.clean(.testType)
   }
 
@@ -104,6 +98,8 @@ class RlmVisitTest: XCTestCase {
   }()
 
   func test_3_createCorruptVisit() {
+    DataManager.shared.clean(.testType)
+
     do {
       let realm = try Realm()
       DataManager.shared.addTo(realm: realm, object: currentVisit)

@@ -5,8 +5,8 @@ import CoreLocation
 @testable import DondeApp
 
 class LocationManagerTest: XCTestCase {
-  var realm: Realm!
-  var locationManager: LocationManager!
+  var realm = DataManager.shared.getRealm(type: .testType)
+  var locationManager: LocationManager = LocationManager.shared
 
   func getLocationWithDate(_ date: Date) -> CLLocation {
     return CLLocation.init(
@@ -25,15 +25,6 @@ class LocationManagerTest: XCTestCase {
     verticalAccuracy: 0,
     timestamp: Date()
   )
-
-  override func setUp() {
-    super.setUp()
-    guard let realmTest = DataManager.shared.getRealm(type: .testType) else {
-      return
-    }
-    realm = realmTest
-    locationManager = LocationManager.shared
-  }
 
   func test_1_RemoveDataBase() {
     DataManager.shared.clean(.testType)

@@ -44,18 +44,13 @@ class LocationManager: NSObject {
 
 extension LocationManager: CLLocationManagerDelegate {
   internal func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit) {
-    guard let realm = dataManager.getRealm(type: .defaultType) else {
-      return
-    }
-
+    let realm = dataManager.getRealm(type: .defaultType)
     let rlmVisit = RlmVisit(visit: visit)
     dataManager.addTo(realm:realm, object:rlmVisit)
   }
 
   internal func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    guard let realm = dataManager.getRealm(type: .defaultType) else {
-      return
-    }
+    let realm = dataManager.getRealm(type: .defaultType)
 
     for location: CLLocation in locations {
       do {
@@ -75,9 +70,7 @@ extension LocationManager: CLLocationManagerDelegate {
     rlmLocationError.errorDescription = error.debugDescription
     rlmLocationError.localizedDescription = (error?.localizedDescription)!
 
-    guard let realm = dataManager.getRealm(type: .defaultType) else {
-      return
-    }
+    let realm = dataManager.getRealm(type: .defaultType)
     dataManager.addTo(realm:realm, object:rlmLocationError)
   }
 

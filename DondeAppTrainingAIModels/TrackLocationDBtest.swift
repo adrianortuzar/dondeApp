@@ -6,7 +6,7 @@ import RealmSwift
 
 class TrackLocationDbTest: XCTestCase {
 
-  var realm: Realm = DataManager.shared.getRealm(type: .locationsTestType)!
+  var realm: Realm = DataManager.shared.getRealm(type: .locationsTestType)
 
   let commons = TestCommons.shared
 

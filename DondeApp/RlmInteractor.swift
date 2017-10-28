@@ -16,7 +16,7 @@ class RlmInteractor: NSObject {
 
   // MARK: realm interactor
 
-  func getRealm(fileName: String) -> Realm? {
+  func getRealm(fileName: String) -> Realm {
     var config = Realm.Configuration()
     config.fileURL = Bundle.main.url(forResource: fileName, withExtension: "realm")
     config.schemaVersion = realmSchemaVersion
@@ -26,8 +26,7 @@ class RlmInteractor: NSObject {
     do {
       return try Realm()
     } catch {
-      print(error)
-      return nil
+      fatalError()
     }
   }
 
@@ -41,7 +40,7 @@ class RlmInteractor: NSObject {
     try realm.writeCopy(toFile: url, encryptionKey: nil)
   }
 
-  func getRealm(type: RealmType) -> Realm? {
+  func getRealm(type: RealmType) -> Realm {
     switch type {
     case .defaultType:
       var config = Realm.Configuration()
@@ -51,8 +50,7 @@ class RlmInteractor: NSObject {
       do {
         return try Realm()
       } catch {
-        print(error)
-        return nil
+        fatalError()
       }
     case .testType :
 
@@ -65,8 +63,7 @@ class RlmInteractor: NSObject {
       do {
         return try Realm()
       } catch {
-        print(error)
-        return nil
+        fatalError()
       }
     case .locationsTestType:
       return DataManager.shared.getRealm(fileName: "locationsTest")
@@ -76,9 +73,7 @@ class RlmInteractor: NSObject {
   /// clean all data from database
   func clean(_ type: RealmType) {
     do {
-      guard let realm = getRealm(type: type) else {
-        throw NSError.init(domain: "Can not cleam realm because does not exist", code: 0, userInfo: nil)
-      }
+      let realm = getRealm(type: type)
       try realm.write {
         realm.deleteAll()
       }

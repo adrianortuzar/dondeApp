@@ -12,9 +12,7 @@ class RlmPlaceTest: XCTestCase {
     rlmVisit.arrivalDate = Date()
     rlmVisit.departureDate = Date()
 
-    guard let realm = DataManager.shared.getRealm(type: .testType) else {
-      fatalError()
-    }
+    let realm = DataManager.shared.getRealm(type: .testType)
     DataManager.shared.addTo(realm: realm, object: rlmVisit)
 
     guard let place = rlmVisit.place else {
@@ -33,9 +31,7 @@ class RlmPlaceTest: XCTestCase {
     rlmVisit50m.arrivalDate = Date()
     rlmVisit50m.departureDate = Date()
 
-    guard let realm = DataManager.shared.getRealm(type: .testType) else {
-      fatalError()
-    }
+    let realm = DataManager.shared.getRealm(type: .testType)
     DataManager.shared.addTo(realm: realm, object: rlmVisit50m)
 
     guard let place = rlmVisit50m.place else {

@@ -6,10 +6,9 @@ import RealmSwift
 
 class VondelParkTrainingTest: XCTestCase {
 
-  var realm: Realm!
+  var realm = DataManager.shared.getRealm(fileName: "testCoffeVoundel")
 
   func deleteTracks() {
-    // delete tracks
     do {
       try realm.write {
         realm.delete(realm.objects(RlmTrack.self))
@@ -42,14 +41,6 @@ class VondelParkTrainingTest: XCTestCase {
     let userCalendar = Calendar.current // user calendar
     return userCalendar.date(from: datc)!
   }()
-
-  override func setUp() {
-    guard let realmm = DataManager.shared.getRealm(fileName: "testCoffeVoundel") else {
-      fatalError()
-    }
-
-    realm = realmm
-  }
 
   func testAddLocations() {
     deleteTracks()
