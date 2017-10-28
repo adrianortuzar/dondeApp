@@ -36,6 +36,10 @@
 		3AFECA891E80232D00723629 /* RlmTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFECA881E80232D00723629 /* RlmTrack.swift */; };
 		A6A51BCDB5FDE6D04C843713 /* Pods_DondeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AB2442E6DCDF8A688396B75 /* Pods_DondeApp.framework */; };
 		BF921345D4AB7F1CEE0AE254 /* Pods_DondeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93651637750D22AA2904E85F /* Pods_DondeAppTests.framework */; };
+		D50B24721FA4EEF300EF4A9B /* RlmInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50B24711FA4EEF300EF4A9B /* RlmInteractor.swift */; };
+		D50B24741FA4F85000EF4A9B /* RlmVisitInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50B24731FA4F85000EF4A9B /* RlmVisitInteractor.swift */; };
+		D50B24761FA4FB7800EF4A9B /* RlmLocationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50B24751FA4FB7800EF4A9B /* RlmLocationInteractor.swift */; };
+		D50B24781FA500BC00EF4A9B /* RlmPlaceInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50B24771FA500BC00EF4A9B /* RlmPlaceInteractor.swift */; };
 		D5350BCE1F879A1A00C72A9F /* vondelParkTraining.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5350BCB1F879A1200C72A9F /* vondelParkTraining.swift */; };
 		D5350BCF1F879A1E00C72A9F /* TrackLocationDBtest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5350BCA1F879A1200C72A9F /* TrackLocationDBtest.swift */; };
 		D5350BDB1F87B18100C72A9F /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5350BDA1F87B18100C72A9F /* DateFormatterExtension.swift */; };
@@ -112,6 +116,10 @@
 		93651637750D22AA2904E85F /* Pods_DondeAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DondeAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4D6726944A24781762940C8 /* Pods-DondeAppTrainingAIModelsTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DondeAppTrainingAIModelsTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DondeAppTrainingAIModelsTest/Pods-DondeAppTrainingAIModelsTest.debug.xcconfig"; sourceTree = "<group>"; };
 		C345F2809F68F11578053F08 /* Pods_DondeAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DondeAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D50B24711FA4EEF300EF4A9B /* RlmInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RlmInteractor.swift; sourceTree = "<group>"; };
+		D50B24731FA4F85000EF4A9B /* RlmVisitInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RlmVisitInteractor.swift; sourceTree = "<group>"; };
+		D50B24751FA4FB7800EF4A9B /* RlmLocationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RlmLocationInteractor.swift; sourceTree = "<group>"; };
+		D50B24771FA500BC00EF4A9B /* RlmPlaceInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RlmPlaceInteractor.swift; sourceTree = "<group>"; };
 		D5350BCA1F879A1200C72A9F /* TrackLocationDBtest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackLocationDBtest.swift; sourceTree = "<group>"; };
 		D5350BCB1F879A1200C72A9F /* vondelParkTraining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vondelParkTraining.swift; sourceTree = "<group>"; };
 		D5350BDA1F87B18100C72A9F /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
@@ -340,6 +348,10 @@
 			children = (
 				D586ADE51F82E6E400A27BE9 /* RlmTrackInteractor.swift */,
 				3A07A4EE1E2E4EDD005AE04D /* DataManager.swift */,
+				D50B24711FA4EEF300EF4A9B /* RlmInteractor.swift */,
+				D50B24731FA4F85000EF4A9B /* RlmVisitInteractor.swift */,
+				D50B24751FA4FB7800EF4A9B /* RlmLocationInteractor.swift */,
+				D50B24771FA500BC00EF4A9B /* RlmPlaceInteractor.swift */,
 			);
 			name = DataInteractors;
 			sourceTree = "<group>";
@@ -689,10 +701,13 @@
 				3A0CDC3C1E64BC3B00ADA22D /* LocationsTableViewController.swift in Sources */,
 				D5350BDB1F87B18100C72A9F /* DateFormatterExtension.swift in Sources */,
 				3A3727391E4CE5AE002C3691 /* Token.swift in Sources */,
+				D50B24741FA4F85000EF4A9B /* RlmVisitInteractor.swift in Sources */,
+				D50B24761FA4FB7800EF4A9B /* RlmLocationInteractor.swift in Sources */,
 				3ADE7EA91E6C388300917D9C /* RlmLocationManagerFinishError.swift in Sources */,
 				3A2197A01E91034F002C3938 /* DayTrackViewModel.swift in Sources */,
 				3AFECA861E7FFF4900723629 /* DayTrackViewController.swift in Sources */,
 				3A309C521E7EA66E00B6C308 /* KeyboardManager.swift in Sources */,
+				D50B24721FA4EEF300EF4A9B /* RlmInteractor.swift in Sources */,
 				3A1EF1C01E718C0D0024691A /* RlmPlace.swift in Sources */,
 				3AB4EF841E8AC2FD00DCF6BD /* Speed.swift in Sources */,
 				3A287CFD1E44DBDE004CB8CA /* LocationManager.swift in Sources */,
@@ -700,6 +715,7 @@
 				3A0CDC411E67086300ADA22D /* MapViewController.swift in Sources */,
 				D586ADE61F82E6E500A27BE9 /* RlmTrackInteractor.swift in Sources */,
 				3AAD2B4F1E2BF549003FF22F /* AppDelegate.swift in Sources */,
+				D50B24781FA500BC00EF4A9B /* RlmPlaceInteractor.swift in Sources */,
 				3A1A0A2F1E5F21150089706E /* RequestManager.swift in Sources */,
 				3A07A4EF1E2E4EDD005AE04D /* DataManager.swift in Sources */,
 				3A3727361E4C9688002C3691 /* KeyChainManager.swift in Sources */,

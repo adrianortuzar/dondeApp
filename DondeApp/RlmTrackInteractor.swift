@@ -59,40 +59,4 @@ class RlmTrackInteractor: NSObject {
     }
     return tracks[secontLastIndex]
   }
-
-  /// merge last two tracks and return if it was succesfull or not
-//  func mergeLastTrack(realm: Realm) -> Bool {
-//    let tracks = realm.objects(RlmTrack.self)
-//
-//    guard let lastTrack = tracks.last else {
-//      return false
-//    }
-//
-//    guard let secondToLastTrack = getTrack(fromLast: 2,realm: realm),
-//      let thirdToLastTrack = getTrack(fromLast: 3, realm: realm) else {
-//        return false
-//    }
-//
-//    let isPossibleToMergee = isPossibleToMerge(secondToLastTrack: secondToLastTrack, lastTrack: lastTrack)
-//
-//    if isPossibleToMergee {
-//      merge(secondToLastTrack: secondToLastTrack, lastTrack: lastTrack, realm: realm)
-//    }
-//
-//    return isPossibleToMergee
-//  }
-//
-//  func isPossibleToMerge(secondToLastTrack: RlmTrack, lastTrack: RlmTrack) -> Bool {
-//    return secondToLastTrack.speedType == lastTrack.speedType
-//  }
-//
-//  func merge(secondToLastTrack: RlmTrack, lastTrack: RlmTrack, realm: Realm){
-//    // merge
-//    for location in lastTrack.locations {
-//      secondToLastTrack.addLocation(location: location, realm: realm)
-//    }
-//
-//    // remove last track
-//    DataManager.shared.delete(object: lastTrack, realm: realm)
-//  }
 }

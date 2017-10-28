@@ -13,6 +13,10 @@ class DataManager: NSObject {
   static let shared = DataManager()
 
   fileprivate let rlmTrackInteractor = RlmTrackInteractor.shared
+  fileprivate let rlmInteractor = RlmInteractor.shared
+  fileprivate let rlmVisitInteractor = RlmVisitInteractor.shared
+  fileprivate let rlmLocationInteractor = RlmLocationInteractor.shared
+  fileprivate let rlmPlaceInteractor = RlmPlaceInteractor.shared
 
   enum DataManagerError: Error {
     case creatingRealm
@@ -27,320 +31,74 @@ class DataManager: NSObject {
   // MARK: realm interactor
 
   func getRealm(fileName: String) -> Realm? {
-    var config = Realm.Configuration()
-    config.fileURL = Bundle.main.url(forResource: fileName, withExtension: "realm")
-    config.schemaVersion = realmSchemaVersion
-
-    Realm.Configuration.defaultConfiguration = config
-
-    do {
-      return try Realm()
-    } catch {
-      print(error)
-      return nil
-    }
+    return rlmInteractor.getRealm(fileName: fileName)
   }
 
   func copyRealmInDocumentsFolder(realm: Realm) throws {
-    let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-
-    guard let url = URL.init(string: documentsPath + "/loc.realm") else {
-      return
-    }
-
-    try realm.writeCopy(toFile: url, encryptionKey: nil)
+    try rlmInteractor.copyRealmInDocumentsFolder(realm: realm)
   }
 
   func getRealm(type: RealmType) -> Realm? {
-    switch type {
-    case .defaultType:
-      var config = Realm.Configuration()
-      config.schemaVersion = realmSchemaVersion
-      Realm.Configuration.defaultConfiguration = config
-
-      do {
-        return try Realm()
-      } catch {
-        print(error)
-        return nil
-      }
-    case .testType :
-
-      var config = Realm.Configuration()
-      config.fileURL = config.fileURL!.deletingLastPathComponent().appendingPathComponent("test.realm")
-      config.schemaVersion = realmSchemaVersion
-
-      Realm.Configuration.defaultConfiguration = config
-
-      do {
-        return try Realm()
-      } catch {
-        print(error)
-        return nil
-      }
-    case .locationsTestType:
-      return DataManager.shared.getRealm(fileName: "locationsTest")
-    }
+    return rlmInteractor.getRealm(type: type)
   }
 
   /// clean all data from database
   func clean(_ type: RealmType) {
-    do {
-      guard let realm = getRealm(type: type) else {
-        throw NSError.init(domain: "Can not cleam realm because does not exist", code: 0, userInfo: nil)
-      }
-      try realm.write {
-        realm.deleteAll()
-      }
-    } catch {
-      fatalError()
-    }
+    rlmInteractor.clean(type)
   }
 
   func delete(object: Object, realm: Realm) {
-    do {
-      try realm.write {
-        realm.delete(object)
-      }
-    } catch {
-      fatalError()
-    }
+    rlmInteractor.delete(object: object, realm: realm)
   }
 
   func delete(results: Results<Object>, realm: Realm) {
-    do {
-      try realm.write {
-        realm.delete(results)
-      }
-    } catch {
-      fatalError()
-    }
+    rlmInteractor.delete(results: results, realm: realm)
   }
 
   func addTo(realm: Realm, object: Object) {
-    do {
-      try update(object: object, realm: realm)
-    } catch {
-      // add to realm
-      do {
-        try realm.write {
-          realm.add(object)
-        }
-      } catch {
-        print(error)
-      }
-
-      if let visit = object as? RlmVisit {
-        resetVisitData(visit, realm: realm)
-      }
-    }
+    rlmInteractor.addTo(realm: realm, object: object)
   }
 
   func update(object: Object, realm: Realm) throws {
-    if let visit = object as? RlmVisit {
-      try updateCurrentVisitWith(visit, realm: realm)
-    } else if let location = object as? RlmLocation {
-      try updateLocationWith(location, realm: realm)
-    } else {
-      throw NSError.init(domain: "Not possible to update object", code: 0, userInfo: nil)
-    }
+    try rlmInteractor.update(object: object, realm: realm)
   }
 
   // MARK: RlmLocation interactor
 
-  private func updateLocationWith(_ location: RlmLocation, realm: Realm) throws {
-    guard let rlmLocation = getLocationsWithDate(location.timestamp, realm: realm) else {
-      throw NSError.init(domain: "Imposible to update location", code: 0, userInfo: nil)
-    }
-    try realm.write {
-      rlmLocation.latitud = location.latitud
-      rlmLocation.longitud = location.longitud
-      rlmLocation.floor = location.floor
-      rlmLocation.altitud = location.altitud
-      rlmLocation.horizontalAccuracy = location.horizontalAccuracy
-      rlmLocation.verticalAccuracy = location.verticalAccuracy
-      rlmLocation.timestamp = location.timestamp
-      rlmLocation.speed = location.speed
-      rlmLocation.course = location.course
-      rlmLocation.speedType = location.speedType
-    }
-  }
-
-  private func existSameDateLocation(_ location: RlmLocation, realm: Realm) -> Bool {
-    return getLocationsWithDate(location.timestamp, realm: realm) != nil
-  }
-
   func getLocationsWithDate(_ date: Date, realm: Realm) -> RlmLocation? {
-    return realm.objects(RlmLocation.self).filter("timestamp == %@", date).first
+    return rlmLocationInteractor.getLocationsWithDate(date, realm: realm)
   }
 
-  func getNameFromLocation(location: CLLocation) -> String? {
-
-    guard let realm = getRealm(type: .defaultType) else {
-      return nil
-    }
-
-    let visits = Array(realm.objects(RlmVisit.self))
-      .filter { $0.place?.customName != nil && !($0.place?.customName?.isEmpty)! }
-
-    var name: String? = nil
-
-    for visit in visits {
-      let visitiLocation = CLLocation(latitude: visit.latitudPrivate, longitude: visit.longitudPrivate)
-      let distance: CLLocationDistance = location.distance(from: visitiLocation)
-
-      if distance < 50 {
-        name = visit.place?.customName
-        break
-      }
-    }
-    return name
+  func getNameFromLocation(location: CLLocation, realm: Realm) -> String? {
+    return rlmLocationInteractor.getNameFromLocation(location: location, realm: realm)
   }
 
   func getLocations(from fromDate: Date?, to toDate: Date?, realm: Realm) -> [RlmLocation] {
-
-    if fromDate != nil && toDate != nil {
-      let dayLocationsResult = realm.objects(RlmLocation.self)
-        .filter("timestamp < %@ && timestamp > %@", toDate!, fromDate!)
-
-      let locations = Array(dayLocationsResult)
-        .sorted(by: { $0.timestamp.compare($1.timestamp) == ComparisonResult.orderedAscending })
-
-      return locations
-    } else {
-      return Array(realm.objects(RlmLocation.self))
-        .sorted(by: { $0.timestamp.compare($1.timestamp) == ComparisonResult.orderedDescending })
-    }
+    return rlmLocationInteractor.getLocations(from: fromDate, to: toDate, realm: realm)
   }
 
   // MARK: RlmVisit
 
-  /**
-   - recalculate the average coordinates for the visit
-   - determinate the place of the visit
-   - create a travel if need it
-   */
-  private func resetVisitData(_ visit: RlmVisit, realm: Realm) {
-    do {
-      try realm.write {
-        visit.setPlace(realm:realm)
-        visit.place?.calculateAverageCoordinates()
-      }
-    } catch {
-      print(error)
-    }
+  func createPlacesFor(visits: [RlmVisit], realm: Realm) throws {
+    try rlmVisitInteractor.createPlacesFor(visits: visits, realm: realm)
   }
 
-  private func updateCurrentVisitWith(_ visit: RlmVisit, realm: Realm) throws {
-    guard let currentVisit = getCurrentVisit(realm: realm) else {
-      throw NSError.init(domain: "Imposible to update current visit because there is not exist current visit", code: 0, userInfo: nil)
-    }
-    try realm.write {
-      // update it
-      currentVisit.latitudPrivate = visit.latitudPrivate
-      currentVisit.longitudPrivate = visit.longitudPrivate
-      currentVisit.departureDate = visit.departureDate
-      currentVisit.arrivalDate = visit.arrivalDate
-      currentVisit.horizontalAccuracy = visit.horizontalAccuracy
-      currentVisit.setPlace(realm:realm)
-      currentVisit.place?.calculateAverageCoordinates()
-    }
-  }
-
-  func createPlacesFor(visits: [RlmVisit]) throws {
-
-    // remove places
-    guard let realm = getRealm(type: .defaultType) else {
-      return
-    }
-    try realm.write {
-      realm.delete(realm.objects(RlmPlace.self))
-    }
-
-    for visit in visits {
-      if visit.place == nil {
-        // get place with same location as visit
-        if let place = getPlaceWithSame(
-          location: CLLocation.init(latitude: visit.latitudPrivate, longitude: visit.longitudPrivate),
-          realm: realm).first {
-
-          try realm.write {
-            visit.place = place
-          }
-        } else {
-          // CREATE NEW PLACE
-          let place = RlmPlace()
-
-          try realm.write {
-            realm.add(place)
-            visit.place = place
-          }
-        }
-      }
-
-    }
-  }
-
-  func getVisitsWithSameLocationAs(_ visit: RlmVisit) -> [RlmVisit] {
-    let visitLocation = CLLocation.init(latitude: visit.latitudPrivate, longitude: visit.longitudPrivate)
-
-    guard let realm = getRealm(type: .defaultType) else {
-      return []
-    }
-
-    return Array(realm.objects(RlmVisit.self)).filter { (visitCompare) -> Bool in
-      let visitCompareLocation = CLLocation.init(
-        latitude: visitCompare.latitudPrivate,
-        longitude: visitCompare.longitudPrivate
-      )
-      let distance: CLLocationDistance = visitLocation.distance(from: visitCompareLocation)
-      if distance < 50 {
-        return true
-      } else {
-        return false
-      }
-    }
+  func getVisitsWithSameLocationAs(_ visit: RlmVisit, realm: Realm) -> [RlmVisit] {
+    return rlmVisitInteractor.getVisitsWithSameLocationAs(visit, realm: realm)
   }
 
   func getCurrentVisit(realm: Realm) -> RlmVisit? {
-    let lastVisit = realm.objects(RlmVisit.self).sorted(byKeyPath: "arrivalDate", ascending: false).first
-    return (lastVisit != nil && lastVisit?.departureDate == Date.distantFuture) ? lastVisit : nil
+    return rlmVisitInteractor.getCurrentVisit(realm: realm)
   }
 
   func getVisits(from fromDate: Date?, to toDate: Date?, realm: Realm) -> [RlmVisit] {
-
-    if fromDate != nil && toDate != nil {
-      let dayVisitsResult = realm.objects(RlmVisit.self)
-        .filter("((departureDate < %@ && departureDate > %@) || (arrivalDate < %@ && arrivalDate > %@))",
-                toDate!, fromDate!, toDate!, fromDate!)
-
-      let visits = Array(dayVisitsResult)
-        .sorted(by: { $0.arrivalDate.compare($1.arrivalDate) == ComparisonResult.orderedDescending })
-      return visits
-    } else {
-      // all visits
-      let visitsSorted = Array(realm.objects(RlmVisit.self)
-        .sorted(by: { $0.arrivalDate.compare($1.arrivalDate) == ComparisonResult.orderedDescending }))
-
-      return visitsSorted
-    }
+    return rlmVisitInteractor.getVisits(from: fromDate, to: toDate, realm: realm)
   }
 
   // MARK: RlmPlaces
 
   func getPlaceWithSame(location: CLLocation, realm: Realm) -> [RlmPlace] {
-
-    let places = realm.objects(RlmPlace.self)
-
-    return Array(places).filter { (rlmPlace) -> Bool in
-      let placeLocation = CLLocation.init(latitude: rlmPlace.averageLatitud, longitude: rlmPlace.averageLongitud)
-      let distance: CLLocationDistance = location.distance(from: placeLocation)
-      if distance < 50 {
-        return true
-      } else {
-        return false
-      }
-    }
+    return rlmPlaceInteractor.getPlaceWithSame(location: location, realm: realm)
   }
 
   // MARK: RlmTrack interactor
