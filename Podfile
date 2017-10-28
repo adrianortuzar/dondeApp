@@ -6,8 +6,8 @@ target ‘DondeApp' do
   use_frameworks!
 
   # Pods for DondeApp
-  pod 'RealmSwift', '~> 2.10.2’
-  pod 'RxRealm'
+  pod 'RealmSwift', '~> 3.0.1’
+  pod 'RxRealm', '~> 0.7'
   pod 'DatePickerDialog'
 
   target 'DondeAppTests' do

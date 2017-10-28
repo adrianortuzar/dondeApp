@@ -12,77 +12,80 @@ import CoreLocation
 
 class RlmTrack: Object {
 
-    let locations = List<RlmLocation>()
+  let locations = List<RlmLocation>()
 
-    dynamic var averageLatitud: Double = 0
-    dynamic var averageLongitud: Double = 0
-    dynamic var averageSpeed: Double = 0
+  dynamic var averageLatitud: Double = 0
+  dynamic var averageLongitud: Double = 0
+  dynamic var averageSpeed: Double = 0
 
-    dynamic var speedType: String = ""
+  dynamic var speedType: String = ""
 
-    dynamic var firstTime: Date = Date()
-    dynamic var lastTime: Date = Date()
+  dynamic var firstTime: Date = Date()
+  dynamic var lastTime: Date = Date()
 
-    // isbelonging
-    func isBelonging(location: RlmLocation) -> Bool {
-
-        if self.locations.count != 0 {
-
-            // check horizontal accuracy
-            if location.isHorizontalAccuracyReliable() {
-
-                // if is visit
-                // if the duration between the last location of the track and the new location
-                // is longer than 2 minutes we should create a new track
-                let lastLocation = self.locations.last
-                //Calendar.current.dateComponents([.second], from: self.lastTime, to: location.timestamp).second ?? 0
-                let secondDiff: Int = Calendar.current.dateComponents([.second],
-                                                                      from: lastLocation!.timestamp,
-                                                                      to: location.timestamp).second ?? 0
-                if secondDiff > 120 && lastLocation?.speedType.description != location.speedType.description {
-                    return false
-                } else if self.speedType == Speed.Velocity.visit.description {
-                    // get the distance between average and the location
-                    let averageLocation = CLLocation.init(latitude:
-                        self.averageLatitud,
-                        longitude: self.averageLongitud
-                    )
-                    let cllocation = CLLocation.init(latitude: location.latitud, longitude: location.longitud)
-                    let distance = averageLocation.distance(from:cllocation)
-                    if distance > 50 {
-                        return false
-                    } else {
-                        return true
-                    }
-                } else {
-
-                    if self.speedType == Speed.getVelocity(from:location.speed).description {
-                        return true
-                    } else {
-                        // if the duration is less than 3 minutes
-                        if self.duration() < 180 {
-
-                            return true
-                        } else {
-                            return false
-                        }
-                    }
-                }
-            } else {
-                // location unreliable
-                // check velocity
-                if Speed.getVelocity(from:location.speed).description == self.speedType {
-                    return true
-                } else {
-                    return false
-                }
-            }
-
-        } else {
-            return true
-        }
-
+  func isBelonging(location: RlmLocation) -> Bool {
+    guard let lastlocation = locations.last else {
+      return true
     }
+
+    if isVisit(location: location) {
+      return isVisitBelonging(location: location)
+    }
+
+    if speedType == Speed.Velocity.visit.description {
+      return location.speedType == speedType
+    }
+
+    if diffWithLastLocation(location: location) > 240 {
+      return false
+    } else {
+      return isValidAcceleration(location: location)
+    }
+  }
+
+  func isVisit(location: RlmLocation) -> Bool {
+    return location.speedType == Speed.Velocity.visit.description
+  }
+
+  func isVisitBelonging(location: RlmLocation) -> Bool {
+    if !isVisit(location: location) {
+      return false
+    }
+
+    guard let lastlocation = locations.last else {
+      return true
+    }
+
+    return lastlocation.speedType == location.speedType
+  }
+
+  func isDistanceGreatThan50m(location: RlmLocation) -> Bool {
+    return getDistanceFromAverate(location: location) > 50
+  }
+
+  func isValidAcceleration(location: RlmLocation) -> Bool {
+    guard let lastLocation = self.locations.last else {
+      return false
+    }
+
+    if location.speed < 0 && lastLocation.speed < 0 {
+      return true
+    } else if location.speed < 0 || lastLocation.speed < 0 {
+      return false
+    }
+
+    return abs(location.speed - lastLocation.speed) < 10
+  }
+
+  func getDistanceFromAverate(location: RlmLocation) -> CLLocationDistance{
+    // get the distance between average and the location
+    let averageLocation = CLLocation.init(latitude:
+      self.averageLatitud,
+                                          longitude: self.averageLongitud
+    )
+    let cllocation = CLLocation.init(latitude: location.latitud, longitude: location.longitud)
+    return averageLocation.distance(from:cllocation)
+  }
 
     func setAverageCoordinates() {
 
@@ -176,7 +179,7 @@ class RlmTrack: Object {
                 self.firstTime = self.locations.first!.timestamp
             }
         } catch {
-            // print error
+            fatalError()
         }
     }
 
@@ -185,14 +188,15 @@ class RlmTrack: Object {
         return Calendar.current.dateComponents([.second], from: self.lastTime, to: location.timestamp).second ?? 0
     }
 
-    func duration() -> Int { //in minutes
-        let firstlocation: RlmLocation = self.locations.first!
-        let lastlocation: RlmLocation = self.locations.last!
-
-        return Calendar.current.dateComponents([.second],
-                                               from: firstlocation.timestamp,
-                                               to: lastlocation.timestamp).second ?? 0
+  func diffWithLastLocation(location: RlmLocation) -> Int { //in minutes
+    guard let lastlocation: RlmLocation = self.locations.last else {
+      return 0
     }
+
+    return Calendar.current.dateComponents([.second],
+                                               from: lastlocation.timestamp,
+                                               to: location.timestamp).second ?? 0
+  }
 
     // Specify properties to ignore (Realm won't persist these)
     override static func ignoredProperties() -> [String] {

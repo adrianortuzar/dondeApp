@@ -6,50 +6,27 @@ import RealmSwift
 
 class TrackLocationDbTest: XCTestCase {
 
-  var realm: Realm!
+  var realm: Realm = DataManager.shared.getRealm(type: .locationsTestType)!
 
-  // MARK: common methods
-
-  func deleteTracks() {
-    do {
-      try realm.write {
-        realm.delete(realm.objects(RlmTrack.self))
-      }
-    } catch {
-      fatalError()
-    }
-  }
+  let commons = TestCommons.shared
 
   // MARK: tests
-
-  override func setUp() {
-    super.setUp()
-    // Put setup code here. This method is called before the invocation of each test method in the class.
-
-    do {
-      guard let realmm = DataManager.shared.getRealm(type: .locationsTestType) else {
-        throw NSError.init()
-      }
-      realm = realmm
-    } catch {
-      print(error)
-    }
-  }
 
   func test_1_AddFirst14LocationsToTracks() {
     let locations = realm.objects(RlmLocation.self).sorted(byKeyPath: "timestamp", ascending: true)
 
     do {
-      deleteTracks()
+      commons.deleteTracks(realm: realm)
 
       for (index, location) in locations.enumerated() where index < 14 {
+        print(location)
         try DataManager.shared.addLocationToTrack(location: location, realm: realm)
       }
 
-      XCTAssertEqual(realm.objects(RlmTrack.self).count, 4, "it should have 4 tracks")
+      XCTAssertEqual(realm.objects(RlmTrack.self).count, 5, "it should have 5 tracks")
 
       let firstTrack: RlmTrack = realm.objects(RlmTrack.self).first!
-      XCTAssertEqual(firstTrack.locations.count, 2, "the firt track should have two locations")
+      XCTAssertEqual(firstTrack.locations.count, 3, "the firt track should have two locations")
 
       let secondTrack: RlmTrack = realm.objects(RlmTrack.self)[1]
       XCTAssertEqual(secondTrack.averageSpeed, 11.556666692098, "second track it should have correct speed average")
@@ -84,7 +61,7 @@ class TrackLocationDbTest: XCTestCase {
     }()
 
     do {
-      deleteTracks()
+      commons.deleteTracks(realm: realm)
 
       let locations = DataManager.shared.getLocations(from: startDate, to: endDate, realm:realm)
 
@@ -134,7 +111,7 @@ class TrackLocationDbTest: XCTestCase {
         try DataManager.shared.addLocationToTrack(location: location, realm: realm)
       }
 
-      _ = RlmTrackInteractor.shared.mergeLastTrack(realm: realm)
+      //_ = RlmTrackInteractor.shared.mergeLastTrack(realm: realm)
       XCTAssertEqual(realm.objects(RlmTrack.self).count, 1)
     } catch {
       fatalError()
@@ -142,7 +119,7 @@ class TrackLocationDbTest: XCTestCase {
   }
 
   func test_4_ProcessAllLocations() {
-    deleteTracks()
+    commons.deleteTracks(realm: realm)
 
     let locations = realm.objects(RlmLocation.self).sorted(byKeyPath: "timestamp", ascending: true)
 
@@ -151,7 +128,6 @@ class TrackLocationDbTest: XCTestCase {
         try DataManager.shared.addLocationToTrack(location: location, realm: realm)
       }
 
-      _ = RlmTrackInteractor.shared.mergeLastTrack(realm: realm)
       XCTAssertEqual(realm.objects(RlmTrack.self).count, 7)
     } catch {
       fatalError()
@@ -162,11 +138,11 @@ class TrackLocationDbTest: XCTestCase {
     let track2: RlmTrack = realm.objects(RlmTrack.self)[1]
     XCTAssertEqual(track2.speedType, Speed.Velocity.transport.description)
     let track3: RlmTrack = realm.objects(RlmTrack.self)[2]
-    XCTAssertEqual(track3.speedType, Speed.Velocity.walk.description)
+    XCTAssertEqual(track3.speedType, Speed.Velocity.visit.description)
     let track4: RlmTrack = realm.objects(RlmTrack.self)[3]
-    XCTAssertEqual(track4.speedType, Speed.Velocity.visit.description)
+    XCTAssertEqual(track4.speedType, Speed.Velocity.walk.description)
     let track5: RlmTrack = realm.objects(RlmTrack.self)[4]
-    XCTAssertEqual(track5.speedType, Speed.Velocity.walk.description)
+    XCTAssertEqual(track5.speedType, Speed.Velocity.visit.description)
     let track6: RlmTrack = realm.objects(RlmTrack.self)[5]
     XCTAssertEqual(track6.speedType, Speed.Velocity.transport.description)
     let track7: RlmTrack = realm.objects(RlmTrack.self)[6]

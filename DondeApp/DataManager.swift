@@ -22,11 +22,11 @@ class DataManager: NSObject {
     super.init()
   }
 
-  let realmSchemaVersion: UInt64 = 29
+  let realmSchemaVersion: UInt64 = 30
 
   // MARK: realm interactor
 
-  func getRealmWith(fileName: String) -> Realm? {
+  func getRealm(fileName: String) -> Realm? {
     var config = Realm.Configuration()
     config.fileURL = Bundle.main.url(forResource: fileName, withExtension: "realm")
     config.schemaVersion = realmSchemaVersion
@@ -36,6 +36,7 @@ class DataManager: NSObject {
     do {
       return try Realm()
     } catch {
+      print(error)
       return nil
     }
   }
@@ -78,7 +79,7 @@ class DataManager: NSObject {
         return nil
       }
     case .locationsTestType:
-      return DataManager.shared.getRealmWith(fileName: "locationsTest")
+      return DataManager.shared.getRealm(fileName: "locationsTest")
     }
   }
 
@@ -100,6 +101,16 @@ class DataManager: NSObject {
     do {
       try realm.write {
         realm.delete(object)
+      }
+    } catch {
+      fatalError()
+    }
+  }
+
+  func delete(results: Results<Object>, realm: Realm) {
+    do {
+      try realm.write {
+        realm.delete(results)
       }
     } catch {
       fatalError()
@@ -345,10 +356,7 @@ class DataManager: NSObject {
     return rlmTrackInteractor.getTracks(from: fromDate, to: toDate, realm: realm)
   }
 
-  func createNewTrackWith(location: RlmLocation, realm: Realm) throws {
-    try rlmTrackInteractor.createNewTrackWith(location: location, realm: realm)
-  }
-
+  /// decided in wich track the location has to be.
   func addLocationToTrack(location: RlmLocation, realm: Realm) throws {
     try rlmTrackInteractor.addLocationToTrack(location: location, realm: realm)
   }
