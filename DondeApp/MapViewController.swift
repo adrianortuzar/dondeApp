@@ -18,7 +18,7 @@ class VisitAnnotation: MKPointAnnotation {
   }
 }
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+class MapViewController: UIViewController {
   @IBOutlet weak var mapView: MKMapView!
   var routeLineView: MKPolylineView?
   let tracks: [RlmTrack]
@@ -37,14 +37,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupMap()
-    printLocations()
+    printTracksLocations(tracks)
   }
 
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
   }
 
-  func setupMap() {
+  private func setupMap() {
     mapView.delegate = self
 
     // optionally you can set your own boundaries of the zoom
@@ -55,28 +55,36 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     mapView.setRegion(region, animated: true)
   }
 
-  func printLocations() {
+  private func printTracksLocations(_ trakcs: [RlmTrack]) {
+    for track in tracks {
+      printTrackLine(track)
+    }
+  }
+
+  private func printTrackLine(_ track: RlmTrack) {
     var coordinateArray: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
 
-    for track in self.tracks {
+    for location in track.locations {
       let locationCoordinate2D = CLLocationCoordinate2D(
-        latitude: track.averageLatitud,
-        longitude:track.averageLongitud
+        latitude: location.latitud,
+        longitude: location.longitud
       )
       coordinateArray.append(locationCoordinate2D)
-
-      // add point
-      let annotation = MKPointAnnotation()
-      annotation.coordinate = locationCoordinate2D
-      self.mapView.addAnnotation(annotation)
     }
 
     // add lines
     let routeline = MKPolyline.init(coordinates: coordinateArray, count: coordinateArray.count)
-    self.mapView.add(routeline)
-
+    mapView.add(routeline)
   }
 
+  private func printPointFrom(locationCoordinate2D: CLLocationCoordinate2D) {
+    let annotation = MKPointAnnotation()
+    annotation.coordinate = locationCoordinate2D
+    mapView.addAnnotation(annotation)
+  }
+}
+
+extension MapViewController: MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
     if overlay is MKPolyline {
       let polylineRenderer = MKPolylineRenderer(overlay: overlay)
