@@ -26,6 +26,7 @@ class DayTrackViewController: UIViewController {
     }
 
     addButtonToNavigationTitle()
+    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(mapButtonPressed))
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -50,6 +51,23 @@ class DayTrackViewController: UIViewController {
       self.viewModel.day = date
       self.setDateButtonTitle()
     }
+  }
+
+  func mapButtonPressed(sender: UIButton!) {
+    guard let tracks = self.viewModel.tracks, let track = tracks.first else {
+      return
+    }
+
+    presentMapView(trackCenter: track, tracks: tracks)
+  }
+
+  func presentMapView(trackCenter: RlmTrack, tracks: [RlmTrack]) {
+    let cordinate = CLLocationCoordinate2D.init(latitude: trackCenter.averageLatitud, longitude: trackCenter.averageLongitud)
+    let mapViewController = MapViewController(centerCoordinate: cordinate, tracks: tracks)
+    guard let navigationController = navigationController else {
+      return
+    }
+    navigationController.pushViewController(mapViewController, animated: true)
   }
 }
 
@@ -93,16 +111,9 @@ extension DayTrackViewController : UITableViewDataSource {
 
 extension DayTrackViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    guard let tracks = self.viewModel.tracks else {
+    guard let tracks = viewModel.tracks else {
       return
     }
-
-    let track = tracks[indexPath.row]
-    let cordinate = CLLocationCoordinate2D.init(latitude: track.averageLatitud, longitude: track.averageLongitud)
-    let mapViewController = MapViewController(centerCoordinate: cordinate, tracks: tracks)
-    guard let navigationController = navigationController else {
-      return
-    }
-    navigationController.pushViewController(mapViewController, animated: true)
+    presentMapView(trackCenter: tracks[indexPath.row], tracks: [tracks[indexPath.row]])
   }
 }

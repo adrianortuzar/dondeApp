@@ -24,9 +24,6 @@ class RlmTrack: Object {
   dynamic var lastTime: Date = Date()
 
   func isBelonging(location: RlmLocation) -> Bool {
-    guard let lastlocation = locations.last else {
-      return true
-    }
 
     if isVisit(location: location) {
       return isVisitBelonging(location: location)
