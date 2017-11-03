@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0EE137B7DBDDBBE4361826D6 /* Pods_DondeAppTrainingAIModelsTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FBB23BAA66B954392E68518 /* Pods_DondeAppTrainingAIModelsTest.framework */; };
+		32FD01BC7B2B16FF7823633C /* Pods_DondeAppTrainingAIModelsTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FBB23BAA66B954392E68518 /* Pods_DondeAppTrainingAIModelsTest.framework */; };
 		3A010CAD1E5611090026B9C8 /* RlmVisit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A010CAC1E5611090026B9C8 /* RlmVisit.swift */; };
 		3A07A4EF1E2E4EDD005AE04D /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A07A4EE1E2E4EDD005AE04D /* DataManager.swift */; };
 		3A0CDC3C1E64BC3B00ADA22D /* LocationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0CDC3A1E64BC3B00ADA22D /* LocationsTableViewController.swift */; };
@@ -35,7 +35,6 @@
 		3AFECA871E7FFF4900723629 /* DayTrackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AFECA851E7FFF4900723629 /* DayTrackViewController.xib */; };
 		3AFECA891E80232D00723629 /* RlmTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFECA881E80232D00723629 /* RlmTrack.swift */; };
 		A6A51BCDB5FDE6D04C843713 /* Pods_DondeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AB2442E6DCDF8A688396B75 /* Pods_DondeApp.framework */; };
-		BF921345D4AB7F1CEE0AE254 /* Pods_DondeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93651637750D22AA2904E85F /* Pods_DondeAppTests.framework */; };
 		D50B24721FA4EEF300EF4A9B /* RlmInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50B24711FA4EEF300EF4A9B /* RlmInteractor.swift */; };
 		D50B24741FA4F85000EF4A9B /* RlmVisitInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50B24731FA4F85000EF4A9B /* RlmVisitInteractor.swift */; };
 		D50B24761FA4FB7800EF4A9B /* RlmLocationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50B24751FA4FB7800EF4A9B /* RlmLocationInteractor.swift */; };
@@ -49,6 +48,7 @@
 		D543320A1F88254F0019A239 /* testCoffeVoundel.realm in Resources */ = {isa = PBXBuildFile; fileRef = D54332081F88254F0019A239 /* testCoffeVoundel.realm */; };
 		D586ADE61F82E6E500A27BE9 /* RlmTrackInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D586ADE51F82E6E400A27BE9 /* RlmTrackInteractor.swift */; };
 		D5FCC2D21F8E59CE00D0E1E4 /* TestCommons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FCC2D01F8BBB8900D0E1E4 /* TestCommons.swift */; };
+		F4219248454B17020386071F /* Pods_DondeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93651637750D22AA2904E85F /* Pods_DondeAppTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,7 +77,7 @@
 
 /* Begin PBXFileReference section */
 		0AB2442E6DCDF8A688396B75 /* Pods_DondeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DondeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0EC94D5C298B0635137688DF /* Pods-DondeAppTrainingAIModelsTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DondeAppTrainingAIModelsTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-DondeAppTrainingAIModelsTest/Pods-DondeAppTrainingAIModelsTest.release.xcconfig"; sourceTree = "<group>"; };
+		1C54081EC17121FB10FAF430 /* Pods-DondeAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DondeAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DondeAppTests/Pods-DondeAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		2FBB23BAA66B954392E68518 /* Pods_DondeAppTrainingAIModelsTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DondeAppTrainingAIModelsTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A010CAC1E5611090026B9C8 /* RlmVisit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RlmVisit.swift; sourceTree = "<group>"; };
 		3A07A4EE1E2E4EDD005AE04D /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -111,11 +111,12 @@
 		3AFECA841E7FFF4900723629 /* DayTrackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayTrackViewController.swift; sourceTree = "<group>"; };
 		3AFECA851E7FFF4900723629 /* DayTrackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DayTrackViewController.xib; sourceTree = "<group>"; };
 		3AFECA881E80232D00723629 /* RlmTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RlmTrack.swift; sourceTree = "<group>"; };
+		556AE4FD5B3490C136FC49A9 /* Pods-DondeAppTrainingAIModelsTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DondeAppTrainingAIModelsTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-DondeAppTrainingAIModelsTest/Pods-DondeAppTrainingAIModelsTest.release.xcconfig"; sourceTree = "<group>"; };
 		8679CD02F2412EA7CD2C734A /* Pods-DondeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DondeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DondeApp/Pods-DondeApp.debug.xcconfig"; sourceTree = "<group>"; };
-		884E72B27C46CE607F5D6BCF /* Pods-DondeAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DondeAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DondeAppTests/Pods-DondeAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		93651637750D22AA2904E85F /* Pods_DondeAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DondeAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B4D6726944A24781762940C8 /* Pods-DondeAppTrainingAIModelsTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DondeAppTrainingAIModelsTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DondeAppTrainingAIModelsTest/Pods-DondeAppTrainingAIModelsTest.debug.xcconfig"; sourceTree = "<group>"; };
 		C345F2809F68F11578053F08 /* Pods_DondeAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DondeAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3F4D4356588B3F7B98902BF /* Pods-DondeAppTrainingAIModelsTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DondeAppTrainingAIModelsTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DondeAppTrainingAIModelsTest/Pods-DondeAppTrainingAIModelsTest.debug.xcconfig"; sourceTree = "<group>"; };
+		C96AF4041CCBE4BB74D6BA73 /* Pods-DondeAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DondeAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DondeAppTests/Pods-DondeAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D50B24711FA4EEF300EF4A9B /* RlmInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RlmInteractor.swift; sourceTree = "<group>"; };
 		D50B24731FA4F85000EF4A9B /* RlmVisitInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RlmVisitInteractor.swift; sourceTree = "<group>"; };
 		D50B24751FA4FB7800EF4A9B /* RlmLocationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RlmLocationInteractor.swift; sourceTree = "<group>"; };
@@ -132,7 +133,6 @@
 		D586ADE51F82E6E400A27BE9 /* RlmTrackInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RlmTrackInteractor.swift; sourceTree = "<group>"; };
 		D5FCC2D01F8BBB8900D0E1E4 /* TestCommons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCommons.swift; sourceTree = "<group>"; };
 		F87A34BC06E21A0E2701CD2A /* Pods-DondeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DondeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-DondeApp/Pods-DondeApp.release.xcconfig"; sourceTree = "<group>"; };
-		FD28CCBE7EAF2F071FCCE66A /* Pods-DondeAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DondeAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DondeAppTests/Pods-DondeAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,7 +150,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF921345D4AB7F1CEE0AE254 /* Pods_DondeAppTests.framework in Frameworks */,
+				F4219248454B17020386071F /* Pods_DondeAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,7 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0EE137B7DBDDBBE4361826D6 /* Pods_DondeAppTrainingAIModelsTest.framework in Frameworks */,
+				32FD01BC7B2B16FF7823633C /* Pods_DondeAppTrainingAIModelsTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,10 +295,10 @@
 			children = (
 				8679CD02F2412EA7CD2C734A /* Pods-DondeApp.debug.xcconfig */,
 				F87A34BC06E21A0E2701CD2A /* Pods-DondeApp.release.xcconfig */,
-				FD28CCBE7EAF2F071FCCE66A /* Pods-DondeAppTests.debug.xcconfig */,
-				884E72B27C46CE607F5D6BCF /* Pods-DondeAppTests.release.xcconfig */,
-				B4D6726944A24781762940C8 /* Pods-DondeAppTrainingAIModelsTest.debug.xcconfig */,
-				0EC94D5C298B0635137688DF /* Pods-DondeAppTrainingAIModelsTest.release.xcconfig */,
+				C96AF4041CCBE4BB74D6BA73 /* Pods-DondeAppTests.debug.xcconfig */,
+				1C54081EC17121FB10FAF430 /* Pods-DondeAppTests.release.xcconfig */,
+				C3F4D4356588B3F7B98902BF /* Pods-DondeAppTrainingAIModelsTest.debug.xcconfig */,
+				556AE4FD5B3490C136FC49A9 /* Pods-DondeAppTrainingAIModelsTest.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -346,8 +346,8 @@
 		D586ADE21F8276F500A27BE9 /* DataInteractors */ = {
 			isa = PBXGroup;
 			children = (
-				D586ADE51F82E6E400A27BE9 /* RlmTrackInteractor.swift */,
 				3A07A4EE1E2E4EDD005AE04D /* DataManager.swift */,
+				D586ADE51F82E6E400A27BE9 /* RlmTrackInteractor.swift */,
 				D50B24711FA4EEF300EF4A9B /* RlmInteractor.swift */,
 				D50B24731FA4F85000EF4A9B /* RlmVisitInteractor.swift */,
 				D50B24751FA4FB7800EF4A9B /* RlmLocationInteractor.swift */,
@@ -384,12 +384,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3AAD2B761E2BF549003FF22F /* Build configuration list for PBXNativeTarget "DondeAppTests" */;
 			buildPhases = (
-				AD89C3036317C16935B1A077 /* [CP] Check Pods Manifest.lock */,
+				BDF398DC0CC7E656A61F808C /* [CP] Check Pods Manifest.lock */,
 				3AAD2B5B1E2BF549003FF22F /* Sources */,
 				3AAD2B5C1E2BF549003FF22F /* Frameworks */,
 				3AAD2B5D1E2BF549003FF22F /* Resources */,
-				DB2E4AC6AE7D7EEFB6BF0579 /* [CP] Embed Pods Frameworks */,
-				590C56AFA03195B54B43B6C2 /* [CP] Copy Pods Resources */,
+				C2823A8DFE97418D33F124C4 /* [CP] Embed Pods Frameworks */,
+				3E0B003064930CD4A40F4FAB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -423,12 +423,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D56E69481F858C0500434378 /* Build configuration list for PBXNativeTarget "DondeAppTrainingAIModelsTest" */;
 			buildPhases = (
-				282E4E3306486248F266EE60 /* [CP] Check Pods Manifest.lock */,
+				439AB43BCB127A824A5003D4 /* [CP] Check Pods Manifest.lock */,
 				D56E693B1F858C0500434378 /* Sources */,
 				D56E693C1F858C0500434378 /* Frameworks */,
 				D56E693D1F858C0500434378 /* Resources */,
-				C70C9648088EA084932269AC /* [CP] Embed Pods Frameworks */,
-				5752B7447A26E2209DAEACBB /* [CP] Copy Pods Resources */,
+				19ABAB15D1C2DD1F9BF896F1 /* [CP] Embed Pods Frameworks */,
+				6879205173E60B9AF52ED0A5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -557,6 +557,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DondeApp/Pods-DondeApp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		19ABAB15D1C2DD1F9BF896F1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DondeAppTrainingAIModelsTest/Pods-DondeAppTrainingAIModelsTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		23789A463CBF53646FA6A9F4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -572,7 +587,22 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DondeApp/Pods-DondeApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		282E4E3306486248F266EE60 /* [CP] Check Pods Manifest.lock */ = {
+		3E0B003064930CD4A40F4FAB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DondeAppTests/Pods-DondeAppTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		439AB43BCB127A824A5003D4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -587,7 +617,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		5752B7447A26E2209DAEACBB /* [CP] Copy Pods Resources */ = {
+		6879205173E60B9AF52ED0A5 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -600,21 +630,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DondeAppTrainingAIModelsTest/Pods-DondeAppTrainingAIModelsTest-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		590C56AFA03195B54B43B6C2 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DondeAppTests/Pods-DondeAppTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8F302993B70F8D325698D9CC /* [CP] Check Pods Manifest.lock */ = {
@@ -632,7 +647,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		AD89C3036317C16935B1A077 /* [CP] Check Pods Manifest.lock */ = {
+		BDF398DC0CC7E656A61F808C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -647,7 +662,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		C70C9648088EA084932269AC /* [CP] Embed Pods Frameworks */ = {
+		C2823A8DFE97418D33F124C4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -659,7 +674,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DondeAppTrainingAIModelsTest/Pods-DondeAppTrainingAIModelsTest-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DondeAppTests/Pods-DondeAppTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D5EE923C1F75555F00B3FA2C /* ShellScript */ = {
@@ -674,21 +689,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
-		DB2E4AC6AE7D7EEFB6BF0579 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DondeAppTests/Pods-DondeAppTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -919,7 +919,7 @@
 		};
 		3AAD2B771E2BF549003FF22F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FD28CCBE7EAF2F071FCCE66A /* Pods-DondeAppTests.debug.xcconfig */;
+			baseConfigurationReference = C96AF4041CCBE4BB74D6BA73 /* Pods-DondeAppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -935,7 +935,7 @@
 		};
 		3AAD2B781E2BF549003FF22F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 884E72B27C46CE607F5D6BCF /* Pods-DondeAppTests.release.xcconfig */;
+			baseConfigurationReference = 1C54081EC17121FB10FAF430 /* Pods-DondeAppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -977,7 +977,7 @@
 		};
 		D56E69461F858C0500434378 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B4D6726944A24781762940C8 /* Pods-DondeAppTrainingAIModelsTest.debug.xcconfig */;
+			baseConfigurationReference = C3F4D4356588B3F7B98902BF /* Pods-DondeAppTrainingAIModelsTest.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1006,7 +1006,7 @@
 		};
 		D56E69471F858C0500434378 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0EC94D5C298B0635137688DF /* Pods-DondeAppTrainingAIModelsTest.release.xcconfig */;
+			baseConfigurationReference = 556AE4FD5B3490C136FC49A9 /* Pods-DondeAppTrainingAIModelsTest.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;

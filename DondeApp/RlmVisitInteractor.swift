@@ -2,7 +2,14 @@ import Foundation
 import RealmSwift
 import CoreLocation
 
-class RlmVisitInteractor: NSObject {
+protocol RlmVisitInteractorProtocol {
+  func createPlacesFor(visits: [RlmVisit], realm: Realm) throws
+  func getVisitsWithSameLocationAs(_ visit: RlmVisit, realm: Realm) -> [RlmVisit]
+  func getCurrentVisit(realm: Realm) -> RlmVisit?
+  func getVisits(from fromDate: Date?, to toDate: Date?, realm: Realm) -> [RlmVisit]
+}
+
+class RlmVisitInteractor: NSObject, RlmVisitInteractorProtocol {
   let rlmPlaceInteractor = RlmPlaceInteractor.shared
 
   static let shared = RlmVisitInteractor()

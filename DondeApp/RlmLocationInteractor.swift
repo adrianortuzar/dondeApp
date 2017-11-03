@@ -2,7 +2,13 @@ import Foundation
 import RealmSwift
 import CoreLocation
 
-class RlmLocationInteractor: NSObject {
+protocol RlmLocationInteractorProtocol {
+  func getLocationsWithDate(_ date: Date, realm: Realm) -> RlmLocation?
+  func getNameFromLocation(location: CLLocation, realm: Realm) -> String?
+  func getLocations(from fromDate: Date?, to toDate: Date?, realm: Realm) -> [RlmLocation]
+}
+
+class RlmLocationInteractor: NSObject, RlmLocationInteractorProtocol {
   static let shared = RlmLocationInteractor()
 
   private override init() {

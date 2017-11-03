@@ -47,19 +47,16 @@ extension LocationManager: CLLocationManagerDelegate {
     let realm = dataManager.getRealm(type: .defaultType)
     let rlmVisit = RlmVisit(visit: visit)
     dataManager.addTo(realm:realm, object:rlmVisit)
+    dataManager.addVisitToTrack(visit: rlmVisit, realm: realm)
   }
 
   internal func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     let realm = dataManager.getRealm(type: .defaultType)
 
     for location: CLLocation in locations {
-      do {
-        let rlmLocation = RlmLocation(cllocation: location)
-        dataManager.addTo(realm: realm, object: rlmLocation)
-        try dataManager.addLocationToTrack(location: rlmLocation, realm: realm)
-      } catch {
-        print(error)
-      }
+      let rlmLocation = RlmLocation(cllocation: location)
+      dataManager.addTo(realm: realm, object: rlmLocation)
+      dataManager.addLocationToTrack(location: rlmLocation, realm: realm)
     }
   }
 

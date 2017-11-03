@@ -2,7 +2,11 @@ import Foundation
 import CoreLocation
 import RealmSwift
 
-class RlmPlaceInteractor: NSObject {
+protocol RlmPlaceInteractorProtocol {
+  func getPlaceWithSame(location: CLLocation, realm: Realm) -> [RlmPlace]
+}
+
+class RlmPlaceInteractor: NSObject, RlmPlaceInteractorProtocol {
   static let shared = RlmPlaceInteractor()
 
   private override init() {

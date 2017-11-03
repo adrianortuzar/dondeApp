@@ -1,7 +1,18 @@
 import Foundation
 import RealmSwift
 
-class RlmInteractor: NSObject {
+protocol RlmInteractorProtocol {
+  func getRealm(fileName: String) -> Realm
+  func getRealm(type: RealmType) -> Realm
+  /// clean all data from database
+  func clean(_ type: RealmType)
+  func delete(object: Object, realm: Realm)
+  func delete(results: Results<Object>, realm: Realm)
+  func addTo(realm: Realm, object: Object)
+  func update(object: Object, realm: Realm) throws
+}
+
+class RlmInteractor: NSObject, RlmInteractorProtocol {
 
   let rlmVisitInteractor = RlmVisitInteractor.shared
   let rlmLocationInteractor = RlmLocationInteractor.shared

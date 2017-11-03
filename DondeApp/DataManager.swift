@@ -28,14 +28,20 @@ class DataManager: NSObject {
 
   let realmSchemaVersion: UInt64 = 30
 
-  // MARK: realm interactor
+  // MARK: string extension
 
+  func stringToDate(_ dateStr: String) -> Date {
+    //let strTime = "2017-02-05T21:24:56.000Z"
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+    let date = formatter.date(from: dateStr)
+    return date!
+  }
+}
+
+extension DataManager: RlmInteractorProtocol {
   func getRealm(fileName: String) -> Realm {
     return rlmInteractor.getRealm(fileName: fileName)
-  }
-
-  func copyRealmInDocumentsFolder(realm: Realm) throws {
-    try rlmInteractor.copyRealmInDocumentsFolder(realm: realm)
   }
 
   func getRealm(type: RealmType) -> Realm {
@@ -62,9 +68,9 @@ class DataManager: NSObject {
   func update(object: Object, realm: Realm) throws {
     try rlmInteractor.update(object: object, realm: realm)
   }
+}
 
-  // MARK: RlmLocation interactor
-
+extension DataManager: RlmLocationInteractorProtocol {
   func getLocationsWithDate(_ date: Date, realm: Realm) -> RlmLocation? {
     return rlmLocationInteractor.getLocationsWithDate(date, realm: realm)
   }
@@ -76,9 +82,32 @@ class DataManager: NSObject {
   func getLocations(from fromDate: Date?, to toDate: Date?, realm: Realm) -> [RlmLocation] {
     return rlmLocationInteractor.getLocations(from: fromDate, to: toDate, realm: realm)
   }
+}
 
-  // MARK: RlmVisit
+extension DataManager: RlmTrackInteractorProtocol {
+  func getResultsTracks(from fromDate: Date, to toDate: Date, realmType: RealmType) -> Results<RlmTrack>? {
+    let realm = getRealm(type: realmType)
+    return getResultsTracks(from: fromDate, to: toDate, realm: realm)
+  }
 
+  func getResultsTracks(from fromDate: Date, to toDate: Date, realm: Realm) -> Results<RlmTrack>? {
+    return rlmTrackInteractor.getResultsTracks(from: fromDate, to: toDate, realm: realm)
+  }
+
+  func getTracks(from fromDate: Date, to toDate: Date, realm: Realm) -> [RlmTrack] {
+    return rlmTrackInteractor.getTracks(from: fromDate, to: toDate, realm: realm)
+  }
+
+  func addLocationToTrack(location: RlmLocation, realm: Realm) {
+    rlmTrackInteractor.addLocationToTrack(location: location, realm: realm)
+  }
+
+  func addVisitToTrack(visit: RlmVisit, realm: Realm) {
+    rlmTrackInteractor.addVisitToTrack(visit: visit, realm: realm)
+  }
+}
+
+extension DataManager: RlmVisitInteractorProtocol {
   func createPlacesFor(visits: [RlmVisit], realm: Realm) throws {
     try rlmVisitInteractor.createPlacesFor(visits: visits, realm: realm)
   }
@@ -94,36 +123,10 @@ class DataManager: NSObject {
   func getVisits(from fromDate: Date?, to toDate: Date?, realm: Realm) -> [RlmVisit] {
     return rlmVisitInteractor.getVisits(from: fromDate, to: toDate, realm: realm)
   }
+}
 
-  // MARK: RlmPlaces
-
+extension DataManager: RlmPlaceInteractorProtocol {
   func getPlaceWithSame(location: CLLocation, realm: Realm) -> [RlmPlace] {
     return rlmPlaceInteractor.getPlaceWithSame(location: location, realm: realm)
-  }
-
-  // MARK: RlmTrack interactor
-
-  func getResultsTracks(from fromDate: Date, to toDate: Date, realmType: RealmType) ->  Results<RlmTrack>? {
-    let realm = getRealm(type: realmType)
-    return rlmTrackInteractor.getResultsTracks(from: fromDate, to: toDate, realm: realm)
-  }
-
-  func getTracks(from fromDate: Date, to toDate: Date, realm: Realm) -> [RlmTrack] {
-    return rlmTrackInteractor.getTracks(from: fromDate, to: toDate, realm: realm)
-  }
-
-  /// decided in wich track the location has to be.
-  func addLocationToTrack(location: RlmLocation, realm: Realm) throws {
-    try rlmTrackInteractor.addLocationToTrack(location: location, realm: realm)
-  }
-
-  // MARK: string extension
-
-  func stringToDate(_ dateStr: String) -> Date {
-    //let strTime = "2017-02-05T21:24:56.000Z"
-    let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-    let date = formatter.date(from: dateStr)
-    return date!
   }
 }
