@@ -48,23 +48,17 @@ class VondelParkTrainingTest: XCTestCase {
     let locations = DataManager.shared.getLocations(from: startDate, to: endDate, realm:realm)
 
     for location in locations {
-      do {
-        try DataManager.shared.addLocationToTrack(location: location, realm: realm)
-      } catch {
-        fatalError()
-      }
+      DataManager.shared.addLocationToTrack(location: location, realm: realm)
     }
 
     let tracks = realm.objects(RlmTrack.self)
+    XCTAssertEqual(tracks.count, 7, "it should have 8 tracks")
     XCTAssertEqual(tracks[0].speedType, Speed.Velocity.visit.description)
-    XCTAssertEqual(tracks[1].speedType, Speed.Velocity.bike.description)
-    XCTAssertEqual(tracks[2].speedType, Speed.Velocity.walk.description)
-    XCTAssertEqual(tracks[3].speedType, Speed.Velocity.visit.description)
-    XCTAssertEqual(tracks[4].speedType, Speed.Velocity.bike.description)
-    XCTAssertEqual(tracks[5].speedType, Speed.Velocity.visit.description)
-    XCTAssertEqual(tracks[6].speedType, Speed.Velocity.bike.description)
-    XCTAssertEqual(tracks[7].speedType, Speed.Velocity.visit.description)
-
-    XCTAssertEqual(realm.objects(RlmTrack.self).count, 8, "it should have 8 tracks")
+    XCTAssertEqual(tracks[1].speedType, Speed.Velocity.visit.description)
+    XCTAssertEqual(tracks[2].speedType, Speed.Velocity.bike.description)
+    XCTAssertEqual(tracks[3].speedType, Speed.Velocity.walk.description)
+    XCTAssertEqual(tracks[4].speedType, Speed.Velocity.visit.description)
+    XCTAssertEqual(tracks[5].speedType, Speed.Velocity.bike.description)
+    XCTAssertEqual(tracks[6].speedType, Speed.Velocity.visit.description)
   }
 }

@@ -43,7 +43,16 @@ class RlmLocation: Object {
   dynamic var course: Float = 0
   dynamic var speedType: String = ""
 
-  let track = LinkingObjects(fromType: RlmTrack.self, property: "locations")
+  var track: RlmTrack? {
+    guard let realm = realm else {
+      return nil
+    }
+    guard let track = tracks.first else {
+      return nil
+    }
+    return track
+  }
+  private let tracks = LinkingObjects(fromType: RlmTrack.self, property: "locations")
 
   func isHorizontalAccuracyReliable() -> Bool {
     return (self.horizontalAccuracy < 100)

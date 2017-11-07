@@ -35,7 +35,7 @@ class RlmTrack: Object {
       return location.speedType == speedType
     }
 
-    if diffWithLastLocation(location: location) > 240 {
+    if !isValidDate(location: location) {
       return false
     } else {
       return isValidAcceleration(location: location)
@@ -47,15 +47,15 @@ class RlmTrack: Object {
   }
 
   func isVisitBelonging(location: RlmLocation) -> Bool {
-    if !isVisit(location: location) {
+    if !isVisit(location: location) && speedType != Speed.Velocity.visit.description {
       return false
     }
 
-    guard let lastlocation = locations.last else {
+    if !isDistanceGreatThan50m(location: location) {
       return true
+    } else {
+      return isValidDate(location: location)
     }
-
-    return lastlocation.speedType == location.speedType
   }
 
   func isDistanceGreatThan50m(location: RlmLocation) -> Bool {
@@ -78,16 +78,12 @@ class RlmTrack: Object {
 
   func getDistanceFromAverate(location: RlmLocation) -> CLLocationDistance {
     // get the distance between average and the location
-    let averageLocation = CLLocation.init(latitude:
-      self.averageLatitud,
-                                          longitude: self.averageLongitud
-    )
+    let averageLocation = CLLocation.init(latitude: self.averageLatitud, longitude: self.averageLongitud)
     let cllocation = CLLocation.init(latitude: location.latitud, longitude: location.longitud)
     return averageLocation.distance(from:cllocation)
   }
 
   func setAverageCoordinates() {
-
     let averageLatitudSum = self.locations.reduce(0) { (result, location) -> Double in
       if location.isHorizontalAccuracyReliable() {
         return result + location.latitud
@@ -129,7 +125,6 @@ class RlmTrack: Object {
   }
 
   func setSpeedType() {
-
     self.speedType = {
       let totalLocationsValidSpeed: Array = Array(self.locations).filter { $0.speed != -1 }
       let totalLocations = self.locations.count
@@ -168,6 +163,8 @@ class RlmTrack: Object {
   }
 
   func add(location: RlmLocation, realm: Realm) {
+    // is location own for another track
+    // 
     do {
       try realm.write {
         self.locations.append(location)
@@ -182,7 +179,7 @@ class RlmTrack: Object {
     }
   }
 
-  func add(locations:[RlmLocation], realm: Realm) {
+  func add(locations: [RlmLocation], realm: Realm) {
     for location in locations {
       add(location: location, realm: realm)
     }
@@ -194,18 +191,24 @@ class RlmTrack: Object {
         self.visit = visit
         self.firstTime = visit.arrivalDate
         self.lastTime = visit.departureDate
+        self.speedType = Speed.Velocity.visit.description
       }
     } catch {
       fatalError()
     }
   }
 
-  // // get difference between last date and passed location
+  // get difference between last date and passed location
   func secondsDifferenceRespect(location: CLLocation) -> Int {
     return Calendar.current.dateComponents([.second], from: self.lastTime, to: location.timestamp).second ?? 0
   }
 
-  func diffWithLastLocation(location: RlmLocation) -> Int { //in minutes
+  // location date more than 4 minutes compare with the last location
+  func isValidDate(location: RlmLocation) -> Bool {
+    return diffDateWithLastLocation(location: location) < 240
+  }
+
+  func diffDateWithLastLocation(location: RlmLocation) -> Int { //in seconds
     guard let lastlocation: RlmLocation = self.locations.last else {
       return 0
     }

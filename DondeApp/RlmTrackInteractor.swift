@@ -30,7 +30,7 @@ class RlmTrackInteractor: NSObject, RlmTrackInteractorProtocol {
       let firstLocation = track.locations.first!
       let lastLocation = track.locations.last!
 
-      return firstLocation.timestamp > fromDate && lastLocation.timestamp < toDate
+      return firstLocation.timestamp >= fromDate && lastLocation.timestamp <= toDate
     })
   }
 
@@ -80,6 +80,8 @@ class RlmTrackInteractor: NSObject, RlmTrackInteractorProtocol {
       addVisitCurrenArrivalCorruptedToTrack(visit: visit, realm: realm)
     } else if !visit.isCurrentVisit && !visit.isArrivalCourrupted {
       addVisitFinishToTrack(visit: visit, realm: realm)
+    } else {
+      fatalError()
     }
   }
 

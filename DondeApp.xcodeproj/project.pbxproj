@@ -46,6 +46,7 @@
 		D541399F1F82EEB200EA76EF /* RlmPlaceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D541399D1F82EEB200EA76EF /* RlmPlaceTest.swift */; };
 		D54332091F88254F0019A239 /* locationsTest.realm in Resources */ = {isa = PBXBuildFile; fileRef = D54332071F88254F0019A239 /* locationsTest.realm */; };
 		D543320A1F88254F0019A239 /* testCoffeVoundel.realm in Resources */ = {isa = PBXBuildFile; fileRef = D54332081F88254F0019A239 /* testCoffeVoundel.realm */; };
+		D564163F1FACDC6700284976 /* RlmTrackInteractorClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D564163E1FACDC6700284976 /* RlmTrackInteractorClass.swift */; };
 		D586ADE61F82E6E500A27BE9 /* RlmTrackInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D586ADE51F82E6E400A27BE9 /* RlmTrackInteractor.swift */; };
 		D5FCC2D21F8E59CE00D0E1E4 /* TestCommons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FCC2D01F8BBB8900D0E1E4 /* TestCommons.swift */; };
 		F4219248454B17020386071F /* Pods_DondeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93651637750D22AA2904E85F /* Pods_DondeAppTests.framework */; };
@@ -128,6 +129,7 @@
 		D541399D1F82EEB200EA76EF /* RlmPlaceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RlmPlaceTest.swift; sourceTree = "<group>"; };
 		D54332071F88254F0019A239 /* locationsTest.realm */ = {isa = PBXFileReference; lastKnownFileType = file; name = locationsTest.realm; path = DondeAppTrainingAIModels/TrainingDataBases/locationsTest.realm; sourceTree = SOURCE_ROOT; };
 		D54332081F88254F0019A239 /* testCoffeVoundel.realm */ = {isa = PBXFileReference; lastKnownFileType = file; name = testCoffeVoundel.realm; path = DondeAppTrainingAIModels/TrainingDataBases/testCoffeVoundel.realm; sourceTree = SOURCE_ROOT; };
+		D564163E1FACDC6700284976 /* RlmTrackInteractorClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RlmTrackInteractorClass.swift; sourceTree = "<group>"; };
 		D56E693F1F858C0500434378 /* DondeAppTrainingAIModelsTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DondeAppTrainingAIModelsTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D56E69431F858C0500434378 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D586ADE51F82E6E400A27BE9 /* RlmTrackInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RlmTrackInteractor.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				3AEE61431E780AEA00B6351F /* RlmVisitTest.swift */,
 				3AB4EF851E8D8BBC00DCF6BD /* LocationManagerTest.swift */,
 				D5350BDC1F87B3A400C72A9F /* DateFormatterExtensionTest.swift */,
+				D564163E1FACDC6700284976 /* RlmTrackInteractorClass.swift */,
 			);
 			path = DondeAppTests;
 			sourceTree = "<group>";
@@ -731,6 +734,7 @@
 				D5350BDD1F87B3A400C72A9F /* DateFormatterExtensionTest.swift in Sources */,
 				D541399F1F82EEB200EA76EF /* RlmPlaceTest.swift in Sources */,
 				3AB4EF861E8D8BBC00DCF6BD /* LocationManagerTest.swift in Sources */,
+				D564163F1FACDC6700284976 /* RlmTrackInteractorClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
