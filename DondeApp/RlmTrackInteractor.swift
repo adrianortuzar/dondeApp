@@ -27,9 +27,9 @@ class RlmTrackInteractor: NSObject, RlmTrackInteractorProtocol {
     let tracksArr =  Array(realm.objects(RlmTrack.self))
 
     return tracksArr.filter({ (track) -> Bool in
-      let firstLocation = track.locations.first!
-      let lastLocation = track.locations.last!
-
+      guard let firstLocation = track.locations.first, let lastLocation = track.locations.last else {
+        return false
+      }
       return firstLocation.timestamp >= fromDate && lastLocation.timestamp <= toDate
     })
   }

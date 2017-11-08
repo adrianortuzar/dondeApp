@@ -34,6 +34,17 @@ class RlmVisitInteractor: NSObject, RlmVisitInteractorProtocol {
     }
   }
 
+  func update(_ visit: RlmVisit, realm: Realm) throws {
+    if !visitExist(visit, realm: realm) {
+      try updateCurrentVisitWith(visit, realm: realm)
+    }
+  }
+
+  func visitExist(_ visit: RlmVisit, realm: Realm) -> Bool {
+    let result =  Array(realm.objects(RlmVisit.self)).filter {$0.arrivalDate == visit.arrivalDate && $0.departureDate == visit.departureDate}
+    return result.count > 0
+  }
+
   func updateCurrentVisitWith(_ visit: RlmVisit, realm: Realm) throws {
     guard let currentVisit = getCurrentVisit(realm: realm) else {
       throw NSError.init(domain: "Imposible to update current visit because there is not exist current visit", code: 0, userInfo: nil)
@@ -51,7 +62,6 @@ class RlmVisitInteractor: NSObject, RlmVisitInteractorProtocol {
   }
 
   func createPlacesFor(visits: [RlmVisit], realm: Realm) throws {
-
     try realm.write {
       realm.delete(realm.objects(RlmPlace.self))
     }

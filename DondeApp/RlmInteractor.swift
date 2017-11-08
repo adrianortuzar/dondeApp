@@ -134,7 +134,7 @@ class RlmInteractor: NSObject, RlmInteractorProtocol {
 
   func update(object: Object, realm: Realm) throws {
     if let visit = object as? RlmVisit {
-      try rlmVisitInteractor.updateCurrentVisitWith(visit, realm: realm)
+      try rlmVisitInteractor.update(visit, realm: realm)
     } else if let location = object as? RlmLocation {
       try rlmLocationInteractor.updateLocationWith(location, realm: realm)
     } else {

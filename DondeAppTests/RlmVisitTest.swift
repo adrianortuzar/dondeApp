@@ -113,4 +113,22 @@ class RlmVisitTest: XCTestCase {
       print(error)
     }
   }
+
+  func test_4_createSameVisitTwice() {
+    DataManager.shared.clean(.testType)
+
+    let visit = RlmVisit()
+    visit.arrivalDate = Date.distantPast
+    visit.departureDate = Date()
+    visit.locationCoordinate2D = CLLocationCoordinate2D(latitude: 52.3410578222804, longitude: 4.82998169210379)
+    DataManager.shared.addTo(realm:realm, object:visit)
+
+    let visit2 = RlmVisit()
+    visit2.arrivalDate = visit.arrivalDate
+    visit2.departureDate = visit.departureDate
+    visit2.locationCoordinate2D = visit.locationCoordinate2D
+    DataManager.shared.addTo(realm:realm, object:visit2)
+
+    XCTAssertEqual(realm.objects(RlmVisit.self).count, 1)
+  }
 }
