@@ -23,7 +23,7 @@ class RlmInteractor: NSObject, RlmInteractorProtocol {
     super.init()
   }
 
-  let realmSchemaVersion: UInt64 = 30
+  let realmSchemaVersion: UInt64 = 31
 
   // MARK: realm interactor
 
